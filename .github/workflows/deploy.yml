@@ -33,6 +33,8 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
+          timeout: 120s
+          command_timeout: 10m
           source: "dist/*"
           target: "/home/${{ secrets.SFTP_USERNAME }}/public_html/"
           strip_components: 1
@@ -45,6 +47,8 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
+          timeout: 120s
+          command_timeout: 10m
           source: "dist/*"
           target: "/home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/"
           strip_components: 1
