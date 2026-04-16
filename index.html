@@ -3,69 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ThreadLab 3D Mockups</title>
+    <title>ThreadLab | 3D Apparel Mockups</title>
   </head>
   <body>
     <div class="page-bg"></div>
 
     <header class="topbar">
-      <div class="brand">ThreadLab</div>
+      <a class="brand" href="#">ThreadLab</a>
       <nav class="topnav">
+        <a href="#how">How it works</a>
+        <a href="#catalog">Catalogo</a>
         <a href="#studio">Studio</a>
-        <a href="#features">Recursos</a>
         <a href="#pricing">Precos</a>
       </nav>
-      <a class="btn btn-small" href="#studio">Experimentar</a>
+      <a class="btn btn-small" href="#studio">Start free</a>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Mockups 3D em tempo real</p>
-          <h1>Transforma designs 2D em mockups 3D profissionais.</h1>
+          <p class="eyebrow">Apparel mockups for ecommerce teams</p>
+          <h1>Create premium 3D t-shirt mockups in minutes.</h1>
           <p class="lead">
-            Faz upload, ajusta cor e posicao, e exporta em segundos. Tudo local,
-            rapido e pronto para lojas, ads e social.
+            Upload your design, tweak size and position, and export production-ready
+            visuals for ads, product pages, and social campaigns.
           </p>
           <div class="hero-cta">
-            <a class="btn" href="#studio">Abrir Studio</a>
-            <a class="btn btn-ghost" href="#pricing">Ver planos</a>
+            <a class="btn" href="#studio">Try the studio</a>
+            <a class="btn btn-ghost" href="#pricing">View plans</a>
           </div>
-          <p class="micro">Sem signup obrigatorio para comecar.</p>
+          <div class="hero-proof">
+            <span>No design team bottleneck</span>
+            <span>Instant render preview</span>
+            <span>Built for fashion brands</span>
+          </div>
         </div>
-        <div class="hero-cards">
-          <article class="stat">
-            <h3>Preview instantaneo</h3>
-            <p>Sem render demorado.</p>
+
+        <div class="hero-metrics">
+          <article class="metric-card">
+            <p class="kicker">Average turnaround</p>
+            <p class="value">2 min</p>
+            <p class="desc">From upload to exported visual.</p>
           </article>
-          <article class="stat">
-            <h3>Export PNG</h3>
-            <p>Pronto para publicar.</p>
+          <article class="metric-card">
+            <p class="kicker">Export quality</p>
+            <p class="value">PNG HD</p>
+            <p class="desc">Ready for Shopify, Meta Ads and marketplaces.</p>
           </article>
-          <article class="stat">
-            <h3>Controlo total</h3>
-            <p>Tamanho, cor e posicionamento.</p>
+          <article class="metric-card">
+            <p class="kicker">Control</p>
+            <p class="value">Full</p>
+            <p class="desc">Color, placement and scale in one panel.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="trust-strip">
+        <p>Used by teams selling on</p>
+        <div class="logos">
+          <span>Shopify</span>
+          <span>Etsy</span>
+          <span>Amazon</span>
+          <span>WooCommerce</span>
+        </div>
+      </section>
+
+      <section id="how" class="how-grid">
+        <article>
+          <p class="step">Step 1</p>
+          <h3>Upload design</h3>
+          <p>Drag your artwork and apply it instantly to the garment texture.</p>
+        </article>
+        <article>
+          <p class="step">Step 2</p>
+          <h3>Adjust placement</h3>
+          <p>Dial size and axis position until the print sits perfectly.</p>
+        </article>
+        <article>
+          <p class="step">Step 3</p>
+          <h3>Export and publish</h3>
+          <p>Download a clean PNG and publish to your storefront immediately.</p>
+        </article>
+      </section>
+
+      <section id="catalog" class="catalog">
+        <div class="section-head">
+          <p class="eyebrow">Template catalog</p>
+          <h2>Build your mockup library faster</h2>
+        </div>
+        <div class="catalog-grid">
+          <article>
+            <h3>Classic Tee</h3>
+            <p>Everyday cut for universal product photos.</p>
+          </article>
+          <article>
+            <h3>Oversized Tee</h3>
+            <p>Streetwear silhouette with larger print area.</p>
+          </article>
+          <article>
+            <h3>Hoodie</h3>
+            <p>Front and chest-focused visuals for colder seasons.</p>
+          </article>
+          <article>
+            <h3>Sweatshirt</h3>
+            <p>Clean crewneck option for premium collections.</p>
           </article>
         </div>
       </section>
 
       <section id="studio" class="studio-wrap">
         <aside id="sidebar">
-          <h2>Studio 3D</h2>
-          <p class="panel-sub">Personaliza o mockup em tempo real.</p>
+          <h2>3D Mockup Studio</h2>
+          <p class="panel-sub">Customize in real time.</p>
 
           <div class="field">
-            <label for="upload">Upload do design (PNG/JPG)</label>
+            <label for="upload">Upload design (PNG/JPG)</label>
             <input type="file" id="upload" accept="image/png,image/jpeg" />
           </div>
 
           <div class="field">
-            <label for="colorPicker">Cor da peca</label>
+            <label for="colorPicker">Garment color</label>
             <input type="color" id="colorPicker" value="#ffffff" />
           </div>
 
           <div class="slider-group">
-            <label for="designSize">Tamanho do design</label>
+            <label for="designSize">Design size</label>
             <div class="slider-row">
               <input type="range" id="designSize" min="50" max="800" value="400" />
               <span class="val" id="sizeVal">400</span>
@@ -73,7 +135,7 @@
           </div>
 
           <div class="slider-group">
-            <label for="designX">Posicao X (horizontal)</label>
+            <label for="designX">Position X</label>
             <div class="slider-row">
               <input type="range" id="designX" min="-500" max="500" value="0" />
               <span class="val" id="xVal">0</span>
@@ -81,60 +143,77 @@
           </div>
 
           <div class="slider-group">
-            <label for="designY">Posicao Y (vertical)</label>
+            <label for="designY">Position Y</label>
             <div class="slider-row">
               <input type="range" id="designY" min="-500" max="500" value="-50" />
               <span class="val" id="yVal">-50</span>
             </div>
           </div>
 
-          <button id="exportBtn">Exportar imagem</button>
+          <button id="exportBtn">Export image</button>
         </aside>
 
         <div class="viewer-shell">
           <div class="viewer-top">
-            <p>Preview ao vivo</p>
-            <span>Arrasta para rodar</span>
+            <p>Live preview</p>
+            <span>Drag to rotate</span>
           </div>
           <div id="canvas-container"></div>
         </div>
       </section>
 
-      <section id="features" class="features">
-        <article>
-          <h3>1. Upload</h3>
-          <p>Importa o teu ficheiro e aplica na peca de imediato.</p>
-        </article>
-        <article>
-          <h3>2. Ajustar</h3>
-          <p>Controla escala e alinhamento com sliders simples.</p>
-        </article>
-        <article>
-          <h3>3. Exportar</h3>
-          <p>Guarda o resultado final em PNG com um clique.</p>
-        </article>
-      </section>
-
       <section id="pricing" class="pricing">
-        <h2>Preco simples</h2>
+        <div class="section-head">
+          <p class="eyebrow">Simple pricing</p>
+          <h2>Start free, upgrade when you scale</h2>
+        </div>
         <div class="price-grid">
           <article>
-            <p class="plan">Free</p>
+            <p class="plan">Starter</p>
             <p class="price">0 EUR</p>
-            <p>Mockups ilimitados em imagem.</p>
+            <ul>
+              <li>Unlimited image exports</li>
+              <li>1 t-shirt template</li>
+              <li>Basic controls</li>
+            </ul>
           </article>
           <article class="featured">
             <p class="plan">Pro</p>
-            <p class="price">19 EUR/mes</p>
-            <p>Preparado para adicionar video e mais modelos.</p>
+            <p class="price">19 EUR/mo</p>
+            <ul>
+              <li>All templates</li>
+              <li>Higher export resolution</li>
+              <li>Priority features</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions</h2>
+        </div>
+        <div class="faq-grid">
+          <article>
+            <h3>Do I need 3D skills?</h3>
+            <p>No. The interface is made for non-technical teams.</p>
+          </article>
+          <article>
+            <h3>Can I use this for ecommerce listings?</h3>
+            <p>Yes, exports are optimized for product pages and ads.</p>
+          </article>
+          <article>
+            <h3>Can I add more garment models later?</h3>
+            <p>Yes, the studio is ready to expand with new templates.</p>
           </article>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>ThreadLab - Mockups 3D</p>
-      <a href="#studio">Voltar ao studio</a>
+      <p>ThreadLab - 3D mockups for apparel brands</p>
+      <a href="#">Back to top</a>
     </footer>
 
     <script type="module" src="/src/main.js"></script>
