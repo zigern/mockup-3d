@@ -1,104 +1,142 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mockup 3D</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: #1a1a2e; display: flex; height: 100vh; font-family: sans-serif; }
-
-      #sidebar {
-        width: 260px;
-        background: #16213e;
-        padding: 24px 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        color: white;
-        overflow-y: auto;
-      }
-
-      #sidebar h1 { font-size: 18px; color: #e2e8f0; }
-      label { font-size: 12px; color: #94a3b8; margin-bottom: 4px; display: block; }
-
-      input[type="file"] {
-        width: 100%; padding: 8px;
-        border-radius: 8px; border: none;
-        background: #0f3460; color: white;
-        cursor: pointer; font-size: 13px;
-      }
-
-      input[type="color"] {
-        width: 100%; height: 40px;
-        padding: 4px; border-radius: 8px;
-        border: none; background: #0f3460;
-        cursor: pointer;
-      }
-
-      .slider-group { display: flex; flex-direction: column; gap: 4px; }
-      .slider-row { display: flex; align-items: center; gap: 8px; }
-
-      input[type="range"] {
-        flex: 1; accent-color: #e94560;
-      }
-
-      .val { font-size: 12px; color: #e2e8f0; width: 32px; text-align: right; }
-
-      button {
-        width: 100%; padding: 10px;
-        border-radius: 8px; border: none;
-        background: #e94560; color: white;
-        font-weight: bold; font-size: 14px;
-        cursor: pointer; margin-top: auto;
-      }
-      button:hover { background: #c73652; }
-
-      #canvas-container { flex: 1; }
-    </style>
+    <title>ThreadLab 3D Mockups</title>
   </head>
   <body>
-    <div id="sidebar">
-      <h1>🎨 Mockup 3D</h1>
+    <div class="page-bg"></div>
 
-      <div>
-        <label>Upload do design (PNG)</label>
-        <input type="file" id="upload" accept="image/png,image/jpeg" />
-      </div>
+    <header class="topbar">
+      <div class="brand">ThreadLab</div>
+      <nav class="topnav">
+        <a href="#studio">Studio</a>
+        <a href="#features">Recursos</a>
+        <a href="#pricing">Precos</a>
+      </nav>
+      <a class="btn btn-small" href="#studio">Experimentar</a>
+    </header>
 
-      <div>
-        <label>Cor da peça</label>
-        <input type="color" id="colorPicker" value="#ffffff" />
-      </div>
-
-      <div class="slider-group">
-        <label>Tamanho do design</label>
-        <div class="slider-row">
-          <input type="range" id="designSize" min="50" max="800" value="400" />
-          <span class="val" id="sizeVal">400</span>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Mockups 3D em tempo real</p>
+          <h1>Transforma designs 2D em mockups 3D profissionais.</h1>
+          <p class="lead">
+            Faz upload, ajusta cor e posicao, e exporta em segundos. Tudo local,
+            rapido e pronto para lojas, ads e social.
+          </p>
+          <div class="hero-cta">
+            <a class="btn" href="#studio">Abrir Studio</a>
+            <a class="btn btn-ghost" href="#pricing">Ver planos</a>
+          </div>
+          <p class="micro">Sem signup obrigatorio para comecar.</p>
         </div>
-      </div>
-
-      <div class="slider-group">
-        <label>Posição X (horizontal)</label>
-        <div class="slider-row">
-          <input type="range" id="designX" min="-500" max="500" value="0" />
-          <span class="val" id="xVal">0</span>
+        <div class="hero-cards">
+          <article class="stat">
+            <h3>Preview instantaneo</h3>
+            <p>Sem render demorado.</p>
+          </article>
+          <article class="stat">
+            <h3>Export PNG</h3>
+            <p>Pronto para publicar.</p>
+          </article>
+          <article class="stat">
+            <h3>Controlo total</h3>
+            <p>Tamanho, cor e posicionamento.</p>
+          </article>
         </div>
-      </div>
+      </section>
 
-      <div class="slider-group">
-        <label>Posição Y (vertical)</label>
-        <div class="slider-row">
-          <input type="range" id="designY" min="-500" max="500" value="-50" />
-          <span class="val" id="yVal">-50</span>
+      <section id="studio" class="studio-wrap">
+        <aside id="sidebar">
+          <h2>Studio 3D</h2>
+          <p class="panel-sub">Personaliza o mockup em tempo real.</p>
+
+          <div class="field">
+            <label for="upload">Upload do design (PNG/JPG)</label>
+            <input type="file" id="upload" accept="image/png,image/jpeg" />
+          </div>
+
+          <div class="field">
+            <label for="colorPicker">Cor da peca</label>
+            <input type="color" id="colorPicker" value="#ffffff" />
+          </div>
+
+          <div class="slider-group">
+            <label for="designSize">Tamanho do design</label>
+            <div class="slider-row">
+              <input type="range" id="designSize" min="50" max="800" value="400" />
+              <span class="val" id="sizeVal">400</span>
+            </div>
+          </div>
+
+          <div class="slider-group">
+            <label for="designX">Posicao X (horizontal)</label>
+            <div class="slider-row">
+              <input type="range" id="designX" min="-500" max="500" value="0" />
+              <span class="val" id="xVal">0</span>
+            </div>
+          </div>
+
+          <div class="slider-group">
+            <label for="designY">Posicao Y (vertical)</label>
+            <div class="slider-row">
+              <input type="range" id="designY" min="-500" max="500" value="-50" />
+              <span class="val" id="yVal">-50</span>
+            </div>
+          </div>
+
+          <button id="exportBtn">Exportar imagem</button>
+        </aside>
+
+        <div class="viewer-shell">
+          <div class="viewer-top">
+            <p>Preview ao vivo</p>
+            <span>Arrasta para rodar</span>
+          </div>
+          <div id="canvas-container"></div>
         </div>
-      </div>
+      </section>
 
-      <button id="exportBtn">⬇ Exportar Imagem</button>
-    </div>
+      <section id="features" class="features">
+        <article>
+          <h3>1. Upload</h3>
+          <p>Importa o teu ficheiro e aplica na peca de imediato.</p>
+        </article>
+        <article>
+          <h3>2. Ajustar</h3>
+          <p>Controla escala e alinhamento com sliders simples.</p>
+        </article>
+        <article>
+          <h3>3. Exportar</h3>
+          <p>Guarda o resultado final em PNG com um clique.</p>
+        </article>
+      </section>
 
-    <div id="canvas-container"></div>
+      <section id="pricing" class="pricing">
+        <h2>Preco simples</h2>
+        <div class="price-grid">
+          <article>
+            <p class="plan">Free</p>
+            <p class="price">0 EUR</p>
+            <p>Mockups ilimitados em imagem.</p>
+          </article>
+          <article class="featured">
+            <p class="plan">Pro</p>
+            <p class="price">19 EUR/mes</p>
+            <p>Preparado para adicionar video e mais modelos.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ThreadLab - Mockups 3D</p>
+      <a href="#studio">Voltar ao studio</a>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
