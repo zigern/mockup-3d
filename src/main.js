@@ -30,6 +30,10 @@ controls.enableDamping = true;
 controls.target.set(0, 0, 0);
 controls.autoRotate = false;
 controls.autoRotateSpeed = 1;
+controls.enableRotate = true;
+controls.enablePan = false;
+controls.minPolarAngle = 0.05;
+controls.maxPolarAngle = Math.PI - 0.05;
 
 scene.add(new THREE.AmbientLight(0xffffff, 1.5));
 const dirLight = new THREE.DirectionalLight(0xffffff, 2);
@@ -339,8 +343,6 @@ function applyGarmentAnimation(elapsed) {
     }
     case 'static':
     default: {
-      modelRoot.rotation.x *= 0.9;
-      modelRoot.rotation.y *= 0.9;
       modelRoot.position.y += (state.baseModelY - modelRoot.position.y) * 0.08;
       break;
     }
@@ -357,7 +359,6 @@ function applyCameraAnimation(elapsed) {
     camera.position.z = 3 + Math.sin(elapsed * 1.5) * 0.2;
   } else {
     controls.autoRotate = false;
-    camera.position.z += (3 - camera.position.z) * 0.08;
   }
 }
 
