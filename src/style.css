@@ -490,6 +490,60 @@ main {
   color: #1b1b1b;
 }
 
+.icon-actions {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  border: 0;
+  border-radius: 12px;
+  min-width: 54px;
+  height: 42px;
+  padding: 0 12px;
+  background: #bcbcbc;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.icon-btn.active {
+  background: #6d6d6d;
+}
+
+.mini-color {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  padding: 0;
+  overflow: hidden;
+}
+
+.pill-grid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.pill {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 10px;
+  background: #bcbcbc;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pill.active {
+  background: #6d6d6d;
+}
+
 .control-group {
   border-top: 1px solid var(--line);
   padding-top: 10px;

@@ -51,27 +51,25 @@ const state = {
   designY: -50,
   designRotate: 0,
   designOpacity: 1,
-  garmentSpinSpeed: 0,
+  acidWash: 0,
+  puffPrint: 0,
+  garmentAnim: 'static',
+  cameraAnim: 'off',
+  baseModelY: 0,
 };
 
 const shirtTexture = new THREE.CanvasTexture(texCanvas);
 shirtTexture.colorSpace = THREE.SRGBColorSpace;
 
+const garmentMaterials = [];
 let modelRoot = null;
+const clock = new THREE.Clock();
 
-const spinSpeedMap = {
-  off: 0,
-  slow: 0.003,
-  medium: 0.008,
-  fast: 0.015,
-};
-
-const cameraSpeedMap = {
-  off: 0,
-  slow: 0.5,
-  medium: 1.2,
-  fast: 2.2,
-};
+function setActiveButton(groupSelector, activeSelector) {
+  document.querySelectorAll(groupSelector).forEach((button) => {
+    button.classList.toggle('active', button.matches(activeSelector));
+  });
+}
 
 function applyBackgroundPreset(preset) {
   switch (preset) {
@@ -91,30 +89,71 @@ function applyBackgroundPreset(preset) {
   }
 }
 
+function updateMaterialFeel() {
+  const puff = state.puffPrint / 100;
+
+  garmentMaterials.forEach((material) => {
+    material.roughness = 0.82 - puff * 0.25;
+    material.metalness = 0.0;
+    material.clearcoat = puff * 0.5;
+    material.clearcoatRoughness = 0.8 - puff * 0.5;
+    material.needsUpdate = true;
+  });
+}
+
+function drawAcidWashOverlay() {
+  const intensity = state.acidWash / 100;
+  if (intensity <= 0) return;
+
+  const dotCount = Math.floor(9000 * intensity);
+  ctx.fillStyle = `rgba(255,255,255,${0.06 * intensity})`;
+  for (let i = 0; i < dotCount; i += 1) {
+    const x = Math.random() * 1024;
+    const y = Math.random() * 1024;
+    const size = Math.random() * (2 + intensity * 4);
+    ctx.fillRect(x, y, size, size);
+  }
+}
+
+function drawUserDesign() {
+  if (!state.userImage) return;
+
+  const centerX = 512 + state.designX;
+  const centerY = 512 + state.designY;
+
+  ctx.save();
+  ctx.translate(centerX, centerY);
+  ctx.rotate((state.designRotate * Math.PI) / 180);
+
+  if (state.puffPrint > 0) {
+    const puffAlpha = state.puffPrint / 100;
+    ctx.shadowColor = `rgba(255,255,255,${0.55 * puffAlpha})`;
+    ctx.shadowBlur = 8 + 20 * puffAlpha;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+  }
+
+  ctx.globalAlpha = state.designOpacity;
+  ctx.drawImage(
+    state.userImage,
+    -state.designSize / 2,
+    -state.designSize / 2,
+    state.designSize,
+    state.designSize,
+  );
+  ctx.restore();
+}
+
 function updateTexture() {
   ctx.clearRect(0, 0, 1024, 1024);
   ctx.fillStyle = state.shirtColor;
   ctx.fillRect(0, 0, 1024, 1024);
 
-  if (state.userImage) {
-    const centerX = 512 + state.designX;
-    const centerY = 512 + state.designY;
-
-    ctx.save();
-    ctx.translate(centerX, centerY);
-    ctx.rotate((state.designRotate * Math.PI) / 180);
-    ctx.globalAlpha = state.designOpacity;
-    ctx.drawImage(
-      state.userImage,
-      -state.designSize / 2,
-      -state.designSize / 2,
-      state.designSize,
-      state.designSize,
-    );
-    ctx.restore();
-  }
+  drawAcidWashOverlay();
+  drawUserDesign();
 
   shirtTexture.needsUpdate = true;
+  updateMaterialFeel();
 }
 
 updateTexture();
@@ -132,14 +171,18 @@ loader.load('/scene.gltf', (gltf) => {
   model.position.sub(center.multiplyScalar(2 / maxDim));
   scene.add(model);
   modelRoot = model;
+  state.baseModelY = model.position.y;
 
   model.traverse((child) => {
     if (child.isMesh) {
-      child.material = new THREE.MeshStandardMaterial({
+      const material = new THREE.MeshPhysicalMaterial({
         map: shirtTexture,
-        roughness: 0.8,
-        metalness: 0.0,
+        roughness: 0.82,
+        metalness: 0,
+        clearcoat: 0,
       });
+      child.material = material;
+      garmentMaterials.push(material);
     }
   });
 });
@@ -192,18 +235,52 @@ bindSlider('designOpacity', 'opacityVal', (value) => {
   state.designOpacity = value / 100;
 });
 
-document.getElementById('bgPreset').addEventListener('change', (event) => {
-  applyBackgroundPreset(event.target.value);
+bindSlider('acidWash', 'acidVal', (value) => {
+  state.acidWash = value;
 });
 
-document.getElementById('garmentSpin').addEventListener('change', (event) => {
-  state.garmentSpinSpeed = spinSpeedMap[event.target.value] ?? 0;
+bindSlider('puffPrint', 'puffVal', (value) => {
+  state.puffPrint = value;
 });
 
-document.getElementById('cameraAuto').addEventListener('change', (event) => {
-  const speed = cameraSpeedMap[event.target.value] ?? 0;
-  controls.autoRotate = speed > 0;
-  controls.autoRotateSpeed = speed;
+const bgColor = document.getElementById('bgColor');
+const bgImageUpload = document.getElementById('bgImageUpload');
+const bgReset = document.getElementById('bgReset');
+
+bgColor.addEventListener('input', (event) => {
+  container.style.background = event.target.value;
+});
+
+bgImageUpload.addEventListener('change', (event) => {
+  const [file] = event.target.files;
+  if (!file) return;
+
+  const imageUrl = URL.createObjectURL(file);
+  container.style.background = `center / cover no-repeat url(${imageUrl})`;
+});
+
+bgReset.addEventListener('click', () => {
+  bgColor.value = '#1f1f24';
+  applyBackgroundPreset('dark');
+});
+
+document.querySelectorAll('[data-garment-anim]').forEach((button) => {
+  button.addEventListener('click', () => {
+    state.garmentAnim = button.dataset.garmentAnim;
+    setActiveButton('#garmentAnimGroup .pill', `[data-garment-anim="${state.garmentAnim}"]`);
+  });
+});
+
+document.querySelectorAll('[data-camera-anim]').forEach((button) => {
+  button.addEventListener('click', () => {
+    state.cameraAnim = button.dataset.cameraAnim;
+    setActiveButton('#cameraAnimGroup .icon-btn', `[data-camera-anim="${state.cameraAnim}"]`);
+
+    if (state.cameraAnim === 'off') {
+      controls.autoRotate = false;
+      camera.position.set(0, 0, 3);
+    }
+  });
 });
 
 advancedToggle.addEventListener('click', () => {
@@ -230,6 +307,50 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   link.click();
 });
 
+function applyGarmentAnimation(elapsed) {
+  if (!modelRoot) return;
+
+  switch (state.garmentAnim) {
+    case 'walk': {
+      modelRoot.rotation.y = Math.sin(elapsed * 1.6) * 0.45;
+      modelRoot.position.y = state.baseModelY + Math.sin(elapsed * 3.2) * 0.03;
+      break;
+    }
+    case 'waves': {
+      modelRoot.rotation.y = Math.sin(elapsed * 1.2) * 0.22;
+      modelRoot.rotation.x = Math.sin(elapsed * 0.8) * 0.06;
+      modelRoot.position.y = state.baseModelY + Math.sin(elapsed * 1.5) * 0.02;
+      break;
+    }
+    case 'knit': {
+      modelRoot.rotation.y += 0.006;
+      modelRoot.rotation.x = Math.sin(elapsed * 2) * 0.03;
+      break;
+    }
+    case 'static':
+    default: {
+      modelRoot.rotation.x *= 0.9;
+      modelRoot.rotation.y *= 0.9;
+      modelRoot.position.y += (state.baseModelY - modelRoot.position.y) * 0.08;
+      break;
+    }
+  }
+}
+
+function applyCameraAnimation(elapsed) {
+  if (state.cameraAnim === 'orbit') {
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.3;
+  } else if (state.cameraAnim === 'focus') {
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.6;
+    camera.position.z = 3 + Math.sin(elapsed * 1.5) * 0.2;
+  } else {
+    controls.autoRotate = false;
+    camera.position.z += (3 - camera.position.z) * 0.08;
+  }
+}
+
 function resizeRenderer() {
   const width = Math.max(container.clientWidth, 320);
   const height = Math.max(container.clientHeight, 420);
@@ -245,9 +366,9 @@ resizeRenderer();
 function animate() {
   requestAnimationFrame(animate);
 
-  if (modelRoot && state.garmentSpinSpeed > 0) {
-    modelRoot.rotation.y += state.garmentSpinSpeed;
-  }
+  const elapsed = clock.getElapsedTime();
+  applyGarmentAnimation(elapsed);
+  applyCameraAnimation(elapsed);
 
   controls.update();
   renderer.render(scene, camera);
