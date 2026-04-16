@@ -464,30 +464,52 @@ main {
   gap: 12px;
 }
 
+#sidebar h2,
 .panel-sub {
-  font-size: 13px;
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .studio-actions {
   display: grid;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 6px;
 }
 
 .action-btn {
   border: 0;
   border-radius: 999px;
-  padding: 10px 14px;
+  min-height: 54px;
+  padding: 10px 16px;
   background: #111;
   color: #fff;
   font-size: 14px;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .action-secondary {
   background: #b9b9b9;
-  color: #1b1b1b;
+  color: #f2f2f2;
+}
+
+.btn-icon {
+  font-size: 20px;
+  line-height: 1;
 }
 
 .icon-actions {
@@ -499,15 +521,19 @@ main {
 
 .icon-btn {
   border: 0;
-  border-radius: 12px;
+  border-radius: 14px;
   min-width: 54px;
-  height: 42px;
+  height: 46px;
   padding: 0 12px;
   background: #bcbcbc;
   color: #fff;
-  font-size: 22px;
+  font-size: 24px;
   line-height: 1;
   cursor: pointer;
+}
+
+.icon-btn-lg {
+  width: 86px;
 }
 
 .icon-btn.active {
@@ -521,6 +547,20 @@ main {
   border: 2px solid #fff;
   padding: 0;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.palette-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: conic-gradient(#ff0000, #ffcc00, #00ff90, #00ccff, #7a3cff, #ff00b3, #ff0000);
+}
+
+.icon-actions.compact .mini-color,
+.icon-actions.compact input[type='color'] {
+  width: 44px;
+  height: 44px;
 }
 
 .pill-grid {
@@ -533,20 +573,28 @@ main {
 .pill {
   border: 0;
   border-radius: 12px;
-  padding: 12px 10px;
+  padding: 12px 12px;
   background: #bcbcbc;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .pill.active {
   background: #6d6d6d;
 }
 
+.pill-ico {
+  font-size: 22px;
+  line-height: 1;
+}
+
 .control-group {
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
+  border-top: 1px solid #dbdbdb;
+  padding-top: 14px;
 }
 
 .control-group summary {
@@ -563,6 +611,15 @@ main {
   display: none;
 }
 
+.control-group .chevron {
+  font-size: 22px;
+  transition: transform 0.2s ease;
+}
+
+.control-group[open] .chevron {
+  transform: rotate(180deg);
+}
+
 .pro-pill {
   border-radius: 999px;
   background: #6b58d8;
@@ -570,11 +627,13 @@ main {
   padding: 2px 8px;
   font-size: 11px;
   font-weight: 700;
+  margin-left: 6px;
 }
 
 .advanced-panel {
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 .advanced-panel.is-collapsed {
@@ -591,9 +650,9 @@ main {
 label {
   font-size: 12px;
   color: #4e473e;
-  text-transform: uppercase;
   letter-spacing: 0.7px;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 input[type='file'],
@@ -633,23 +692,27 @@ input[type='range'] {
 .val {
   min-width: 36px;
   text-align: right;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 #exportBtn {
   margin-top: auto;
   border: 0;
-  border-radius: 10px;
-  padding: 12px;
-  background: var(--brand);
+  border-radius: 999px;
+  padding: 16px;
+  background: #514ec8;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #exportBtn:hover {
-  background: var(--brand-dark);
+  background: #433fb4;
 }
 
 .viewer-shell {

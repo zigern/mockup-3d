@@ -180,57 +180,71 @@
           <p class="panel-sub">Controla design, camera e animacao.</p>
 
           <div class="studio-actions">
-            <label for="upload" class="action-btn">Upload Your Design</label>
+            <label for="upload" class="action-btn">
+              <span>Upload Your Design</span>
+              <span class="btn-icon">⇪</span>
+            </label>
             <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
             <button id="advancedToggle" class="action-btn action-secondary" type="button">
-              Advanced Controls
+              <span>Advanced Controls</span>
+              <span class="btn-icon">⚙</span>
             </button>
           </div>
 
-          <details class="control-group" open>
-            <summary>Garment Color</summary>
+          <details class="control-group">
+            <summary>
+              <span>Garment Color</span>
+              <span class="chevron">⌄</span>
+            </summary>
             <div class="field">
-              <label for="colorPicker">Color</label>
-              <input type="color" id="colorPicker" value="#ffffff" />
+              <div class="icon-actions compact">
+                <span class="palette-dot" aria-hidden="true"></span>
+                <label for="colorPicker" class="sr-only">Color</label>
+                <input type="color" id="colorPicker" value="#ffffff" />
+              </div>
             </div>
           </details>
 
-          <details class="control-group" open>
-            <summary>Background</summary>
+          <details class="control-group">
+            <summary>
+              <span>Background</span>
+              <span class="chevron">⌄</span>
+            </summary>
             <div class="icon-actions">
-              <label for="bgImageUpload" class="icon-btn" title="Upload background">🖼</label>
+              <label for="bgImageUpload" class="icon-btn icon-btn-lg" title="Upload background">⤴</label>
               <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" class="icon-btn" type="button" title="Reset background">↺</button>
+              <button id="bgReset" class="icon-btn icon-btn-lg" type="button" title="Reset background">↺</button>
+              <span class="palette-dot" aria-hidden="true"></span>
               <input id="bgColor" class="mini-color" type="color" value="#1f1f24" title="Background color" />
             </div>
           </details>
 
-          <details class="control-group" open>
+          <details class="control-group">
             <summary>
-              Animation
-              <span class="pro-pill">Pro</span>
+              <span>Animation <span class="pro-pill">Pro</span></span>
+              <span class="chevron">⌄</span>
             </summary>
             <div class="pill-grid" id="garmentAnimGroup">
-              <button type="button" class="pill active" data-garment-anim="static">Static</button>
-              <button type="button" class="pill" data-garment-anim="walk">Walk</button>
-              <button type="button" class="pill" data-garment-anim="waves">Waves</button>
-              <button type="button" class="pill" data-garment-anim="knit">Knit</button>
+              <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><span class="pill-ico">🧍</span></button>
+              <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><span class="pill-ico">🚶</span></button>
+              <button type="button" class="pill" data-garment-anim="waves"><span>Waves</span><span class="pill-ico">≋</span></button>
+              <button type="button" class="pill" data-garment-anim="knit"><span>Knit</span><span class="pill-ico">✥</span></button>
             </div>
           </details>
 
-          <details class="control-group" open>
+          <details class="control-group">
             <summary>
-              Camera Animation
-              <span class="pro-pill">Pro</span>
+              <span>Camera Animation <span class="pro-pill">Pro</span></span>
+              <span class="chevron">⌄</span>
             </summary>
             <div class="icon-actions" id="cameraAnimGroup">
-              <button type="button" class="icon-btn active" data-camera-anim="off" title="Off">⊘</button>
-              <button type="button" class="icon-btn" data-camera-anim="orbit" title="Orbit">⟳</button>
-              <button type="button" class="icon-btn" data-camera-anim="focus" title="Focus">⟲</button>
+              <button type="button" class="icon-btn icon-btn-lg active" data-camera-anim="off" title="Off">⊘</button>
+              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="orbit" title="Orbit">⟳</button>
+              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="focus" title="Focus">⟲</button>
             </div>
           </details>
 
-          <div id="advancedPanel" class="advanced-panel">
+          <div id="advancedPanel" class="advanced-panel is-collapsed">
             <div class="slider-group">
               <label for="designSize">Design Size</label>
               <div class="slider-row">
@@ -288,7 +302,7 @@
             </div>
           </div>
 
-          <button id="exportBtn">Export</button>
+          <button id="exportBtn">Export <span class="btn-icon">▻</span></button>
         </aside>
 
         <div class="viewer-shell">

@@ -8,6 +8,7 @@ const advancedPanel = document.getElementById('advancedPanel');
 const advancedToggle = document.getElementById('advancedToggle');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 const viewerShell = document.querySelector('.viewer-shell');
+const accordionGroups = document.querySelectorAll('.control-group');
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -285,6 +286,15 @@ document.querySelectorAll('[data-camera-anim]').forEach((button) => {
 
 advancedToggle.addEventListener('click', () => {
   advancedPanel.classList.toggle('is-collapsed');
+});
+
+accordionGroups.forEach((group) => {
+  group.addEventListener('toggle', () => {
+    if (!group.open) return;
+    accordionGroups.forEach((other) => {
+      if (other !== group) other.open = false;
+    });
+  });
 });
 
 fullscreenBtn.addEventListener('click', async () => {
