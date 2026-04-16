@@ -592,6 +592,12 @@ main {
   line-height: 1;
 }
 
+.pill-ico-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
 .control-group {
   border-top: 1px solid #dbdbdb;
   padding-top: 14px;
