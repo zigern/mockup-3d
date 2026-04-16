@@ -177,49 +177,121 @@
       <section id="studio" class="studio-wrap">
         <aside id="sidebar">
           <h2>Studio 3D</h2>
-          <p class="panel-sub">Personaliza o mockup em tempo real.</p>
+          <p class="panel-sub">Controla design, camera e animacao.</p>
 
-          <div class="field">
-            <label for="upload">Upload do design (PNG/JPG)</label>
-            <input type="file" id="upload" accept="image/png,image/jpeg" />
+          <div class="studio-actions">
+            <label for="upload" class="action-btn">Upload Your Design</label>
+            <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
+            <button id="advancedToggle" class="action-btn action-secondary" type="button">
+              Advanced Controls
+            </button>
           </div>
 
-          <div class="field">
-            <label for="colorPicker">Cor da peca</label>
-            <input type="color" id="colorPicker" value="#ffffff" />
-          </div>
+          <details class="control-group" open>
+            <summary>Garment Color</summary>
+            <div class="field">
+              <label for="colorPicker">Color</label>
+              <input type="color" id="colorPicker" value="#ffffff" />
+            </div>
+          </details>
 
-          <div class="slider-group">
-            <label for="designSize">Tamanho do design</label>
-            <div class="slider-row">
-              <input type="range" id="designSize" min="50" max="800" value="400" />
-              <span class="val" id="sizeVal">400</span>
+          <details class="control-group" open>
+            <summary>Background</summary>
+            <div class="field">
+              <label for="bgPreset">Preset</label>
+              <select id="bgPreset">
+                <option value="dark" selected>Dark studio</option>
+                <option value="soft">Soft gray</option>
+                <option value="warm">Warm gradient</option>
+                <option value="clean">Clean white</option>
+              </select>
+            </div>
+          </details>
+
+          <details class="control-group" open>
+            <summary>
+              Animation
+              <span class="pro-pill">Pro</span>
+            </summary>
+            <div class="field">
+              <label for="garmentSpin">Garment spin</label>
+              <select id="garmentSpin">
+                <option value="off" selected>Off</option>
+                <option value="slow">Slow</option>
+                <option value="medium">Medium</option>
+                <option value="fast">Fast</option>
+              </select>
+            </div>
+          </details>
+
+          <details class="control-group" open>
+            <summary>
+              Camera Animation
+              <span class="pro-pill">Pro</span>
+            </summary>
+            <div class="field">
+              <label for="cameraAuto">Orbit camera</label>
+              <select id="cameraAuto">
+                <option value="off" selected>Off</option>
+                <option value="slow">Slow</option>
+                <option value="medium">Medium</option>
+                <option value="fast">Fast</option>
+              </select>
+            </div>
+          </details>
+
+          <div id="advancedPanel" class="advanced-panel">
+            <div class="slider-group">
+              <label for="designSize">Design Size</label>
+              <div class="slider-row">
+                <input type="range" id="designSize" min="50" max="800" value="400" />
+                <span class="val" id="sizeVal">400</span>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <label for="designX">Position X</label>
+              <div class="slider-row">
+                <input type="range" id="designX" min="-500" max="500" value="0" />
+                <span class="val" id="xVal">0</span>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <label for="designY">Position Y</label>
+              <div class="slider-row">
+                <input type="range" id="designY" min="-500" max="500" value="-50" />
+                <span class="val" id="yVal">-50</span>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <label for="designRotate">Rotation</label>
+              <div class="slider-row">
+                <input type="range" id="designRotate" min="-180" max="180" value="0" />
+                <span class="val" id="rotateVal">0</span>
+              </div>
+            </div>
+
+            <div class="slider-group">
+              <label for="designOpacity">Opacity</label>
+              <div class="slider-row">
+                <input type="range" id="designOpacity" min="10" max="100" value="100" />
+                <span class="val" id="opacityVal">100</span>
+              </div>
             </div>
           </div>
 
-          <div class="slider-group">
-            <label for="designX">Posicao X (horizontal)</label>
-            <div class="slider-row">
-              <input type="range" id="designX" min="-500" max="500" value="0" />
-              <span class="val" id="xVal">0</span>
-            </div>
-          </div>
-
-          <div class="slider-group">
-            <label for="designY">Posicao Y (vertical)</label>
-            <div class="slider-row">
-              <input type="range" id="designY" min="-500" max="500" value="-50" />
-              <span class="val" id="yVal">-50</span>
-            </div>
-          </div>
-
-          <button id="exportBtn">Exportar imagem</button>
+          <button id="exportBtn">Export</button>
         </aside>
 
         <div class="viewer-shell">
           <div class="viewer-top">
             <p>Preview ao vivo</p>
-            <span>Arrasta para rodar</span>
+            <div class="viewer-tools">
+              <span>Arrasta para rodar</span>
+              <button id="fullscreenBtn" type="button">Fullscreen</button>
+            </div>
           </div>
           <div id="canvas-container"></div>
         </div>

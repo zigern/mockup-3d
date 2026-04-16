@@ -468,6 +468,65 @@ main {
   font-size: 13px;
 }
 
+.studio-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.action-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.action-secondary {
+  background: #b9b9b9;
+  color: #1b1b1b;
+}
+
+.control-group {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.control-group summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.control-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.pro-pill {
+  border-radius: 999px;
+  background: #6b58d8;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.advanced-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.advanced-panel.is-collapsed {
+  display: none;
+}
+
 .field,
 .slider-group {
   display: flex;
@@ -484,7 +543,8 @@ label {
 }
 
 input[type='file'],
-input[type='color'] {
+input[type='color'],
+select {
   width: 100%;
   border: 1px solid var(--line);
   background: #fff;
@@ -498,6 +558,11 @@ input[type='file'] {
 input[type='color'] {
   height: 42px;
   padding: 3px;
+}
+
+select {
+  height: 40px;
+  padding: 0 10px;
 }
 
 .slider-row {
@@ -550,6 +615,21 @@ input[type='range'] {
 .viewer-top p {
   margin: 0;
   font-family: 'Syne', sans-serif;
+}
+
+.viewer-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#fullscreenBtn {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 #canvas-container {
