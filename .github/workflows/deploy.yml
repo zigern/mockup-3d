@@ -38,6 +38,18 @@ jobs:
           strip_components: 1
           overwrite: true
 
+      - name: Deploy dist to Hostinger domain public_html
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          source: "dist/*"
+          target: "/home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/"
+          strip_components: 1
+          overwrite: true
+
       - name: Verify deployed index on server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -48,3 +60,5 @@ jobs:
           script: |
             ls -la /home/${{ secrets.SFTP_USERNAME }}/public_html/
             head -n 5 /home/${{ secrets.SFTP_USERNAME }}/public_html/index.html
+            ls -la /home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/
+            head -n 5 /home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/index.html
