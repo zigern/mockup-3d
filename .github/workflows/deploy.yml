@@ -26,15 +26,14 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy dist to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy dist to Hostinger via SFTP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          protocol: ftp
-          timeout: 300000
-          log-level: standard
-          local-dir: ./dist/
-          server-dir: /public_html/
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: ${{ secrets.SFTP_PORT }}
+          source: "dist/*"
+          target: "public_html"
+          strip_components: 1
+          overwrite: true
