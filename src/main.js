@@ -274,7 +274,6 @@ bindSlider('puffPrint', 'puffVal', (value) => {
 const bgImageUpload = document.getElementById('bgImageUpload');
 const bgReset = document.getElementById('bgReset');
 const bgColor = document.getElementById('bgColor');
-const bgColorPill = document.querySelector('.bg-color-pill');
 const bgPresetGroup = document.getElementById('bgPresetGroup');
 const bgGrayStrip = document.getElementById('bgGrayStrip');
 let currentBackgroundObjectUrl = null;
@@ -311,11 +310,6 @@ function setActiveGrayChip(activeSelector) {
   });
 }
 
-function syncBackgroundPickerPreview(color) {
-  if (!bgColorPill) return;
-  bgColorPill.style.setProperty('--bg-picker-color', color);
-}
-
 bgImageUpload.addEventListener('change', (event) => {
   const [file] = event.target.files;
   if (!file) return;
@@ -331,10 +325,7 @@ bgImageUpload.addEventListener('change', (event) => {
 bgReset.addEventListener('click', () => {
   clearBackgroundObjectUrl();
   applyBackgroundPreset('dark');
-  if (bgColor) {
-    bgColor.value = '#1f1f24';
-    syncBackgroundPickerPreview('#1f1f24');
-  }
+  if (bgColor) bgColor.value = '#1f1f24';
   setActiveBackgroundThumb('[data-bg-preset="dark"]');
   setActiveGrayChip('');
 });
@@ -367,10 +358,7 @@ if (bgGrayStrip) {
     button.addEventListener('click', () => {
       clearBackgroundObjectUrl();
       container.style.background = button.dataset.bgColor;
-      if (bgColor) {
-        bgColor.value = button.dataset.bgColor;
-        syncBackgroundPickerPreview(button.dataset.bgColor);
-      }
+      if (bgColor) bgColor.value = button.dataset.bgColor;
       setActiveBackgroundThumb('');
       setActiveGrayChip(`[data-bg-color="${button.dataset.bgColor}"]`);
     });
@@ -381,12 +369,9 @@ if (bgColor) {
   bgColor.addEventListener('input', (event) => {
     clearBackgroundObjectUrl();
     container.style.background = event.target.value;
-    syncBackgroundPickerPreview(event.target.value);
     setActiveBackgroundThumb('');
     setActiveGrayChip('');
   });
-
-  syncBackgroundPickerPreview(bgColor.value);
 }
 
 document.querySelectorAll('[data-garment-anim]').forEach((button) => {
