@@ -9,15 +9,15 @@
     <div class="studio-shell">
       <aside class="left-rail">
         <div class="rail-group">
-          <button type="button" class="rail-btn active" title="Home">?</button>
-          <button type="button" class="rail-btn" title="Tools">?</button>
-          <button type="button" class="rail-btn" title="Catalog">?</button>
-          <button type="button" class="rail-btn" title="Templates">?</button>
-          <button type="button" class="rail-btn" title="Upload">?</button>
+          <button type="button" class="rail-btn active" title="Home">◉</button>
+          <button type="button" class="rail-btn" title="Tools">⬡</button>
+          <button type="button" class="rail-btn" title="Catalog">▦</button>
+          <button type="button" class="rail-btn" title="Templates">⬒</button>
+          <button type="button" class="rail-btn" title="Upload">⤴</button>
         </div>
         <div class="rail-group">
-          <button type="button" class="rail-btn" id="fullscreenBtn" title="Fullscreen">?</button>
-          <button type="button" class="rail-btn" title="Reset view">?</button>
+          <button type="button" class="rail-btn" id="fullscreenBtn" title="Fullscreen">⤢</button>
+          <button type="button" class="rail-btn" title="Reset view">↻</button>
           <button type="button" class="rail-btn" title="Help">?</button>
         </div>
       </aside>
@@ -60,8 +60,25 @@
             <details class="inspector-block" open>
               <summary>Mockup</summary>
               <div class="block-content">
-                <div class="control-label-row">
-                  <label for="colorPicker">Garment Color</label>
+                <div class="row-label">Colors</div>
+                <div class="top-dot-row">
+                  <button type="button" class="dot-color" data-color="#000000" style="--dot:#000000" title="Black"></button>
+                  <button type="button" class="dot-color" data-color="#1a1a1a" style="--dot:#1a1a1a" title="Dark"></button>
+                  <button type="button" class="dot-color" data-color="#444444" style="--dot:#444444" title="Charcoal"></button>
+                  <button type="button" class="dot-color" data-color="#777777" style="--dot:#777777" title="Gray"></button>
+                </div>
+
+                <div class="row-label">Material</div>
+                <div class="material-chips">
+                  <button type="button" class="material-chip active">Basic</button>
+                  <button type="button" class="material-chip">Metallic</button>
+                  <button type="button" class="material-chip">Clay</button>
+                </div>
+
+                <label for="upload" class="upload-inline">Upload your design</label>
+
+                <div class="control-label-row compact">
+                  <label for="colorPicker">Garment color</label>
                   <input type="color" id="colorPicker" value="#ffffff" />
                 </div>
                 <div class="color-swatches" id="garmentSwatches">
@@ -80,6 +97,13 @@
             <details class="inspector-block" open>
               <summary>Background</summary>
               <div class="block-content">
+                <div class="select-fake">Solid</div>
+                <div class="control-label-row compact">
+                  <label for="bgColor">Color</label>
+                  <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
+                </div>
+                <div class="select-fake small">sRGB</div>
+
                 <div class="bg-actions">
                   <label for="bgImageUpload" class="bg-upload-btn" title="Upload background" aria-label="Upload background">
                     <img src="/icons/bg-upload-cloud.png" alt="" />
@@ -87,7 +111,6 @@
                   </label>
                   <input type="file" id="bgImageUpload" accept="image/*" hidden />
                   <button id="bgReset" class="bg-reset-btn" type="button">Reset</button>
-                  <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
                 </div>
                 <div class="bg-gray-strip" id="bgGrayStrip">
                   <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318" title="Graphite"></button>
@@ -109,19 +132,36 @@
             </details>
 
             <details class="inspector-block" open>
-              <summary>Animation <span class="pro-pill">Pro</span></summary>
+              <summary>Environment</summary>
               <div class="block-content">
-                <div class="pill-grid" id="garmentAnimGroup">
-                  <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><img class="pill-ico-img" src="/icons/anim-static.png" alt="" /></button>
-                  <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><img class="pill-ico-img" src="/icons/anim-walk.png" alt="" /></button>
-                  <button type="button" class="pill" data-garment-anim="waves"><span>Waves</span><img class="pill-ico-img" src="/icons/anim-knit.png" alt="" /></button>
-                  <button type="button" class="pill" data-garment-anim="knit"><span>Knit</span><img class="pill-ico-img" src="/icons/anim-waves.png" alt="" /></button>
+                <div class="select-fake">City</div>
+                <div class="pad-grid"></div>
+                <div class="mini-slider-row">
+                  <label>Intensity</label>
+                  <input type="range" value="60" />
+                  <span>1.25</span>
                 </div>
               </div>
             </details>
 
             <details class="inspector-block" open>
-              <summary>Camera Animation <span class="pro-pill">Pro</span></summary>
+              <summary>Lighting</summary>
+              <div class="block-content">
+                <div class="control-label-row compact">
+                  <label>Color</label>
+                  <input type="color" value="#ffffff" />
+                </div>
+                <div class="pad-grid"></div>
+                <div class="mini-slider-row">
+                  <label>Intensity</label>
+                  <input type="range" value="55" />
+                  <span>1.26</span>
+                </div>
+              </div>
+            </details>
+
+            <details class="inspector-block" open>
+              <summary>Camera</summary>
               <div class="block-content">
                 <div class="camera-actions" id="cameraAnimGroup">
                   <button type="button" class="icon-btn active" data-camera-anim="off" title="Off">Off</button>
@@ -132,70 +172,107 @@
             </details>
 
             <details class="inspector-block" open>
-              <summary>Position & Rotation</summary>
+              <summary>Scene</summary>
+              <div class="block-content">
+                <div class="select-fake">None</div>
+              </div>
+            </details>
+
+            <details class="inspector-block" open>
+              <summary>Rotation</summary>
               <div id="advancedPanel" class="block-content advanced-panel">
                 <div class="slider-group">
-                  <label for="designSize">Design Size</label>
-                  <div class="slider-row">
-                    <input type="range" id="designSize" min="50" max="800" value="400" />
-                    <span class="val" id="sizeVal">400</span>
-                  </div>
-                </div>
-
-                <div class="slider-group">
-                  <label for="designX">Position X</label>
-                  <div class="slider-row">
-                    <input type="range" id="designX" min="-500" max="500" value="0" />
-                    <span class="val" id="xVal">0</span>
-                  </div>
-                </div>
-
-                <div class="slider-group">
-                  <label for="designY">Position Y</label>
-                  <div class="slider-row">
-                    <input type="range" id="designY" min="-500" max="500" value="-50" />
-                    <span class="val" id="yVal">-50</span>
-                  </div>
-                </div>
-
-                <div class="slider-group">
-                  <label for="designRotate">Rotation</label>
+                  <label for="designRotate">x</label>
                   <div class="slider-row">
                     <input type="range" id="designRotate" min="-180" max="180" value="0" />
                     <span class="val" id="rotateVal">0</span>
                   </div>
                 </div>
-
                 <div class="slider-group">
-                  <label for="designOpacity">Opacity</label>
+                  <label>y</label>
                   <div class="slider-row">
-                    <input type="range" id="designOpacity" min="10" max="100" value="100" />
-                    <span class="val" id="opacityVal">100</span>
+                    <input type="range" value="90" />
+                    <span class="val">90</span>
                   </div>
                 </div>
-
                 <div class="slider-group">
-                  <label for="acidWash">Acid Wash</label>
+                  <label>z</label>
                   <div class="slider-row">
-                    <input type="range" id="acidWash" min="0" max="100" value="0" />
-                    <span class="val" id="acidVal">0</span>
-                  </div>
-                </div>
-
-                <div class="slider-group">
-                  <label for="puffPrint">Puff Print</label>
-                  <div class="slider-row">
-                    <input type="range" id="puffPrint" min="0" max="100" value="0" />
-                    <span class="val" id="puffVal">0</span>
+                    <input type="range" value="0" />
+                    <span class="val">0</span>
                   </div>
                 </div>
               </div>
             </details>
+
+            <details class="inspector-block" open>
+              <summary>Position</summary>
+              <div class="block-content advanced-panel">
+                <div class="slider-group">
+                  <label for="designX">x</label>
+                  <div class="slider-row">
+                    <input type="range" id="designX" min="-500" max="500" value="0" />
+                    <span class="val" id="xVal">0</span>
+                  </div>
+                </div>
+                <div class="slider-group">
+                  <label for="designY">y</label>
+                  <div class="slider-row">
+                    <input type="range" id="designY" min="-500" max="500" value="-50" />
+                    <span class="val" id="yVal">-50</span>
+                  </div>
+                </div>
+                <div class="slider-group">
+                  <label>z</label>
+                  <div class="slider-row">
+                    <input type="range" value="0" />
+                    <span class="val">0</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <div class="hidden-controls">
+              <div class="slider-group">
+                <label for="designSize">Design Size</label>
+                <div class="slider-row">
+                  <input type="range" id="designSize" min="50" max="800" value="400" />
+                  <span class="val" id="sizeVal">400</span>
+                </div>
+              </div>
+              <div class="slider-group">
+                <label for="designOpacity">Opacity</label>
+                <div class="slider-row">
+                  <input type="range" id="designOpacity" min="10" max="100" value="100" />
+                  <span class="val" id="opacityVal">100</span>
+                </div>
+              </div>
+              <div class="slider-group">
+                <label for="acidWash">Acid Wash</label>
+                <div class="slider-row">
+                  <input type="range" id="acidWash" min="0" max="100" value="0" />
+                  <span class="val" id="acidVal">0</span>
+                </div>
+              </div>
+              <div class="slider-group">
+                <label for="puffPrint">Puff Print</label>
+                <div class="slider-row">
+                  <input type="range" id="puffPrint" min="0" max="100" value="0" />
+                  <span class="val" id="puffVal">0</span>
+                </div>
+              </div>
+              <div class="pill-grid" id="garmentAnimGroup">
+                <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><img class="pill-ico-img" src="/icons/anim-static.png" alt="" /></button>
+                <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><img class="pill-ico-img" src="/icons/anim-walk.png" alt="" /></button>
+                <button type="button" class="pill" data-garment-anim="waves"><span>Waves</span><img class="pill-ico-img" src="/icons/anim-knit.png" alt="" /></button>
+                <button type="button" class="pill" data-garment-anim="knit"><span>Knit</span><img class="pill-ico-img" src="/icons/anim-waves.png" alt="" /></button>
+              </div>
+            </div>
           </aside>
         </section>
 
         <footer class="timeline-bar">
-          <button type="button" class="play-btn">?</button>
+          <button type="button" class="play-btn">▶</button>
           <div class="timeline-track">
             <span class="tick"></span>
             <span class="tick"></span>
@@ -211,4 +288,3 @@
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-
