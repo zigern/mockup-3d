@@ -220,12 +220,32 @@
               <span>Background</span>
               <span class="chevron">⌄</span>
             </summary>
-            <div class="icon-actions">
-              <label for="bgImageUpload" class="icon-btn icon-btn-lg" title="Upload background">⤴</label>
+            <div class="icon-actions bg-actions">
+              <label for="bgImageUpload" class="icon-btn bg-tool-btn" title="Upload background" aria-label="Upload background">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 18.5A2.5 2.5 0 0 0 6.5 21h11A2.5 2.5 0 0 0 20 18.5v-7A2.5 2.5 0 0 0 17.5 9H15l-1.2-2H10.2L9 9H6.5A2.5 2.5 0 0 0 4 11.5v7z" />
+                  <path d="M12 8V3.5" />
+                  <path d="M9.8 5.7 12 3.5l2.2 2.2" />
+                  <circle cx="12" cy="15.2" r="3.2" />
+                </svg>
+              </label>
               <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" class="icon-btn icon-btn-lg" type="button" title="Reset background">↺</button>
+              <button id="bgReset" class="icon-btn bg-tool-btn" type="button" title="Reset background" aria-label="Reset background">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12a8 8 0 1 0 2.4-5.7" />
+                  <path d="M4 4.8v4.6h4.6" />
+                </svg>
+              </button>
               <span class="palette-dot" aria-hidden="true"></span>
               <input id="bgColor" class="mini-color" type="color" value="#1f1f24" title="Background color" />
+            </div>
+            <div class="bg-presets" id="bgPresetGroup">
+              <button type="button" class="bg-thumb is-active" data-bg-preset="dark" title="Default studio gradient"></button>
+              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-dark.jpg" title="Dark grunge"><img src="/backgrounds/bg-grunge-dark.jpg" alt="Dark grunge background" /></button>
+              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-concrete-gray.jpg" title="Concrete gray"><img src="/backgrounds/bg-concrete-gray.jpg" alt="Gray concrete background" /></button>
+              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-red.jpg" title="Grunge red"><img src="/backgrounds/bg-grunge-red.jpg" alt="Grunge red background" /></button>
+              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg" title="Grunge olive"><img src="/backgrounds/bg-grunge-olive.jpg" alt="Grunge olive background" /></button>
+              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg" title="Brown light"><img src="/backgrounds/bg-brown-light.jpg" alt="Brown light background" /></button>
             </div>
           </details>
 

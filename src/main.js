@@ -274,23 +274,73 @@ bindSlider('puffPrint', 'puffVal', (value) => {
 const bgColor = document.getElementById('bgColor');
 const bgImageUpload = document.getElementById('bgImageUpload');
 const bgReset = document.getElementById('bgReset');
+const bgPresetGroup = document.getElementById('bgPresetGroup');
+let currentBackgroundObjectUrl = null;
+
+function clearBackgroundObjectUrl() {
+  if (!currentBackgroundObjectUrl) return;
+  URL.revokeObjectURL(currentBackgroundObjectUrl);
+  currentBackgroundObjectUrl = null;
+}
+
+function setActiveBackgroundThumb(activeSelector) {
+  if (!bgPresetGroup) return;
+  if (!activeSelector) {
+    bgPresetGroup.querySelectorAll('.bg-thumb').forEach((button) => {
+      button.classList.remove('is-active');
+    });
+    return;
+  }
+  bgPresetGroup.querySelectorAll('.bg-thumb').forEach((button) => {
+    button.classList.toggle('is-active', button.matches(activeSelector));
+  });
+}
 
 bgColor.addEventListener('input', (event) => {
+  clearBackgroundObjectUrl();
   container.style.background = event.target.value;
+  setActiveBackgroundThumb('');
 });
 
 bgImageUpload.addEventListener('change', (event) => {
   const [file] = event.target.files;
   if (!file) return;
 
+  clearBackgroundObjectUrl();
   const imageUrl = URL.createObjectURL(file);
-  container.style.background = `center / cover no-repeat url(${imageUrl})`;
+  currentBackgroundObjectUrl = imageUrl;
+  container.style.background = `center / cover no-repeat url("${imageUrl}")`;
+  setActiveBackgroundThumb('');
 });
 
 bgReset.addEventListener('click', () => {
+  clearBackgroundObjectUrl();
   bgColor.value = '#1f1f24';
   applyBackgroundPreset('dark');
+  setActiveBackgroundThumb('[data-bg-preset="dark"]');
 });
+
+if (bgPresetGroup) {
+  bgPresetGroup.querySelectorAll('.bg-thumb').forEach((button) => {
+    button.addEventListener('click', () => {
+      clearBackgroundObjectUrl();
+      const preset = button.dataset.bgPreset;
+      const image = button.dataset.bgImage;
+
+      if (preset) {
+        applyBackgroundPreset(preset);
+      } else if (image) {
+        container.style.background = `center / cover no-repeat url("${image}")`;
+      }
+
+      setActiveBackgroundThumb(
+        button.dataset.bgPreset
+          ? `[data-bg-preset="${button.dataset.bgPreset}"]`
+          : `[data-bg-image="${button.dataset.bgImage}"]`,
+      );
+    });
+  });
+}
 
 document.querySelectorAll('[data-garment-anim]').forEach((button) => {
   button.addEventListener('click', () => {
