@@ -9,6 +9,8 @@ const advancedToggle = document.getElementById('advancedToggle');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 const viewerShell = document.querySelector('.viewer-shell');
 const accordionGroups = document.querySelectorAll('.control-group');
+const colorPicker = document.getElementById('colorPicker');
+const garmentSwatches = document.getElementById('garmentSwatches');
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -74,6 +76,20 @@ function setActiveButton(groupSelector, activeSelector) {
   document.querySelectorAll(groupSelector).forEach((button) => {
     button.classList.toggle('active', button.matches(activeSelector));
   });
+}
+
+function setGarmentColor(hex) {
+  const normalized = hex.toLowerCase();
+  state.shirtColor = normalized;
+  colorPicker.value = normalized;
+
+  if (garmentSwatches) {
+    garmentSwatches.querySelectorAll('.swatch').forEach((button) => {
+      button.classList.toggle('is-active', button.dataset.color.toLowerCase() === normalized);
+    });
+  }
+
+  updateTexture();
 }
 
 function applyBackgroundPreset(preset) {
@@ -215,10 +231,17 @@ document.getElementById('upload').addEventListener('change', (event) => {
   img.src = URL.createObjectURL(file);
 });
 
-document.getElementById('colorPicker').addEventListener('input', (event) => {
-  state.shirtColor = event.target.value;
-  updateTexture();
+colorPicker.addEventListener('input', (event) => {
+  setGarmentColor(event.target.value);
 });
+
+if (garmentSwatches) {
+  garmentSwatches.querySelectorAll('.swatch').forEach((button) => {
+    button.addEventListener('click', () => {
+      setGarmentColor(button.dataset.color);
+    });
+  });
+}
 
 bindSlider('designSize', 'sizeVal', (value) => {
   state.designSize = value;

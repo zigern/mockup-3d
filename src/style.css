@@ -563,6 +563,32 @@ main {
   height: 44px;
 }
 
+.color-swatches {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.swatch {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  border: 2px solid #d8d8d8;
+  background: var(--swatch, #fff);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.swatch:hover {
+  transform: translateY(-1px);
+}
+
+.swatch.is-active {
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.14);
+}
+
 .pill-grid {
   margin-top: 8px;
   display: grid;
