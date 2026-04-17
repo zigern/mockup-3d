@@ -5,10 +5,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const container = document.getElementById('canvas-container');
 const advancedPanel = document.getElementById('advancedPanel');
-const advancedToggle = document.getElementById('advancedToggle');
 const fullscreenBtn = document.getElementById('fullscreenBtn');
 const viewerShell = document.querySelector('.viewer-shell');
-const accordionGroups = document.querySelectorAll('.control-group');
 const colorPicker = document.getElementById('colorPicker');
 const garmentSwatches = document.getElementById('garmentSwatches');
 
@@ -390,19 +388,6 @@ document.querySelectorAll('[data-camera-anim]').forEach((button) => {
       controls.autoRotate = false;
       camera.position.set(0, 0, 3);
     }
-  });
-});
-
-advancedToggle.addEventListener('click', () => {
-  advancedPanel.classList.toggle('is-collapsed');
-});
-
-accordionGroups.forEach((group) => {
-  group.addEventListener('toggle', () => {
-    if (!group.open) return;
-    accordionGroups.forEach((other) => {
-      if (other !== group) other.open = false;
-    });
   });
 });
 

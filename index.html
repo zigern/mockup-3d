@@ -3,231 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ThreadLab | Mockups 3D para roupa</title>
+    <title>ThreadLab Studio</title>
   </head>
-  <body>
-    <div class="page-bg"></div>
-
-    <header class="topbar">
-      <a class="brand" href="#">ThreadLab</a>
-      <nav class="topnav">
-        <a href="#beneficios">Beneficios</a>
-        <a href="#catalogo">Catalogo</a>
-        <a href="#studio">Studio</a>
-        <a href="#precos">Precos</a>
-      </nav>
-      <a class="btn btn-small" href="#studio">Comecar gratis</a>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Mockups 3D para ecommerce de moda</p>
-          <h1>Cria imagens de produto premium em minutos.</h1>
-          <p class="lead">
-            Faz upload do teu design, ajusta posicao no mockup 3D e exporta pronto para Shopify,
-            Etsy, marketplace ou ads.
-          </p>
-          <div class="hero-cta">
-            <a class="btn" href="#studio">Abrir studio</a>
-            <a class="btn btn-ghost" href="#precos">Ver planos</a>
-          </div>
-          <ul class="hero-list">
-            <li>Sem depender de Photoshop para cada variacao</li>
-            <li>Preview em tempo real e export imediato</li>
-            <li>Base pronta para escalar com novos modelos</li>
-          </ul>
+  <body class="studio-page">
+    <div class="studio-shell">
+      <header class="studio-topbar">
+        <div class="brand-wrap">
+          <strong>ThreadLab</strong>
+          <span>3D Studio</span>
         </div>
+        <div class="top-actions">
+          <label for="upload" class="top-upload">
+            <img src="/icons/bg-upload-cloud.png" alt="" />
+            <span>Upload Design</span>
+          </label>
+          <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
+          <button id="exportBtn" class="top-export" type="button">Export</button>
+        </div>
+      </header>
 
-        <div class="hero-visual">
-          <article class="preview-card">
-            <img src="/src/assets/hero.png" alt="Preview de mockup" />
-            <div class="preview-meta">
-              <span>Resultado final</span>
-              <strong>PNG pronto a publicar</strong>
+      <section class="studio-workspace">
+        <aside class="panel panel-left">
+          <div class="panel-section">
+            <h3>Garment Color</h3>
+            <div class="icon-actions compact">
+              <label for="colorPicker" class="sr-only">Color</label>
+              <input type="color" id="colorPicker" value="#ffffff" />
             </div>
-          </article>
-          <div class="mini-stats">
-            <article><p>Tempo medio</p><strong>2 min</strong></article>
-            <article><p>Formato</p><strong>PNG HD</strong></article>
-            <article><p>Controlo</p><strong>Total</strong></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="models-showcase" id="modelos">
-        <div class="section-head">
-          <p class="eyebrow">Modelos</p>
-          <h2>Escolhe um blank e personaliza</h2>
-        </div>
-        <div class="models-grid">
-          <article class="model-card">
-            <span class="model-badge">Free</span>
-            <button class="model-info" type="button" aria-label="Info">i</button>
-            <img src="/src/assets/hero.png" alt="Oversized tee" class="model-variant-1" />
-            <a href="#studio" class="model-cta">Customize</a>
-          </article>
-          <article class="model-card">
-            <button class="model-info" type="button" aria-label="Info">i</button>
-            <img src="/src/assets/hero.png" alt="Classic tee" class="model-variant-2" />
-            <a href="#studio" class="model-cta">Customize</a>
-          </article>
-          <article class="model-card">
-            <button class="model-info" type="button" aria-label="Info">i</button>
-            <img src="/src/assets/hero.png" alt="Street tee" class="model-variant-3" />
-            <a href="#studio" class="model-cta">Customize</a>
-          </article>
-          <article class="model-card">
-            <button class="model-info" type="button" aria-label="Info">i</button>
-            <img src="/src/assets/hero.png" alt="Sweatshirt" class="model-variant-4" />
-            <a href="#studio" class="model-cta">Customize</a>
-          </article>
-          <article class="model-card">
-            <button class="model-info" type="button" aria-label="Info">i</button>
-            <img src="/src/assets/hero.png" alt="Ladies tee" class="model-variant-5" />
-            <a href="#studio" class="model-cta">Customize</a>
-          </article>
-          <article class="model-card">
-            <button class="model-info" type="button" aria-label="Info">i</button>
-            <img src="/src/assets/hero.png" alt="Hoodie" class="model-variant-6" />
-            <a href="#studio" class="model-cta">Customize</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="logo-strip">
-        <p>Ideal para lojas em</p>
-        <div>
-          <span>Shopify</span>
-          <span>WooCommerce</span>
-          <span>Etsy</span>
-          <span>Amazon</span>
-        </div>
-      </section>
-
-      <section id="beneficios" class="benefits">
-        <div class="section-head">
-          <p class="eyebrow">Porque usar ThreadLab</p>
-          <h2>Uma homepage base para converter e vender mais rapido</h2>
-        </div>
-        <div class="benefits-grid">
-          <article>
-            <h3>Velocidade de criacao</h3>
-            <p>Lanca colecoes mais rapido sem esperar por producao fotografica.</p>
-          </article>
-          <article>
-            <h3>Consistencia visual</h3>
-            <p>Mantem o mesmo look em todas as paginas de produto e campanhas.</p>
-          </article>
-          <article>
-            <h3>Custo reduzido</h3>
-            <p>Menos necessidade de shooting e edicoes manuais repetitivas.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="catalogo" class="catalog">
-        <div class="section-head">
-          <p class="eyebrow">Catalogo de mockups</p>
-          <h2>Escolhe o template e personaliza</h2>
-        </div>
-        <div class="catalog-grid">
-          <article>
-            <img src="/src/assets/hero.png" alt="Template classic tee" />
-            <h3>Classic Tee</h3>
-            <p>Template universal para qualquer loja de apparel.</p>
-          </article>
-          <article>
-            <img src="/src/assets/hero.png" alt="Template oversized tee" />
-            <h3>Oversized Tee</h3>
-            <p>Silhueta streetwear para colecoes modernas.</p>
-          </article>
-          <article>
-            <img src="/src/assets/hero.png" alt="Template hoodie" />
-            <h3>Hoodie</h3>
-            <p>Visual forte para outono/inverno e bundles.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="how-it-works">
-        <div class="section-head">
-          <p class="eyebrow">Processo simples</p>
-          <h2>Do design ao produto em 3 passos</h2>
-        </div>
-        <div class="steps-grid">
-          <article>
-            <span>1</span>
-            <h3>Upload</h3>
-            <p>Carrega o ficheiro PNG/JPG do teu design.</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>Ajuste</h3>
-            <p>Move, escala e escolhe a cor da peca em segundos.</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>Export</h3>
-            <p>Guarda o mockup final e publica de imediato.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="studio" class="studio-wrap">
-        <aside id="sidebar">
-          <h2>Studio 3D</h2>
-          <p class="panel-sub">Controla design, camera e animacao.</p>
-
-          <div class="studio-actions">
-            <label for="upload" class="action-btn">
-              <span>Upload Your Design</span>
-              <span class="btn-icon">⇪</span>
-            </label>
-            <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
-            <button id="advancedToggle" class="action-btn action-secondary" type="button">
-              <span>Advanced Controls</span>
-              <span class="btn-icon">⚙</span>
-            </button>
-          </div>
-
-          <details class="control-group">
-            <summary>
-              <span>Garment Color</span>
-              <span class="chevron">⌄</span>
-            </summary>
-            <div class="field">
-              <div class="icon-actions compact">
-                <label for="colorPicker" class="sr-only">Color</label>
-                <input type="color" id="colorPicker" value="#ffffff" />
-              </div>
-              <div class="color-swatches" id="garmentSwatches">
-                <button type="button" class="swatch is-active" data-color="#ffffff" style="--swatch:#ffffff" aria-label="White" title="White"></button>
-                <button type="button" class="swatch" data-color="#111111" style="--swatch:#111111" aria-label="Black" title="Black"></button>
-                <button type="button" class="swatch" data-color="#8c8c8c" style="--swatch:#8c8c8c" aria-label="Gray" title="Gray"></button>
-                <button type="button" class="swatch" data-color="#1f2f5d" style="--swatch:#1f2f5d" aria-label="Navy" title="Navy"></button>
-                <button type="button" class="swatch" data-color="#4d6b3c" style="--swatch:#4d6b3c" aria-label="Olive" title="Olive"></button>
-                <button type="button" class="swatch" data-color="#7a2d2d" style="--swatch:#7a2d2d" aria-label="Burgundy" title="Burgundy"></button>
-                <button type="button" class="swatch" data-color="#d8ccb9" style="--swatch:#d8ccb9" aria-label="Sand" title="Sand"></button>
-                <button type="button" class="swatch" data-color="#b9d2e8" style="--swatch:#b9d2e8" aria-label="Sky" title="Sky"></button>
-              </div>
+            <div class="color-swatches" id="garmentSwatches">
+              <button type="button" class="swatch is-active" data-color="#ffffff" style="--swatch:#ffffff" aria-label="White" title="White"></button>
+              <button type="button" class="swatch" data-color="#111111" style="--swatch:#111111" aria-label="Black" title="Black"></button>
+              <button type="button" class="swatch" data-color="#8c8c8c" style="--swatch:#8c8c8c" aria-label="Gray" title="Gray"></button>
+              <button type="button" class="swatch" data-color="#1f2f5d" style="--swatch:#1f2f5d" aria-label="Navy" title="Navy"></button>
+              <button type="button" class="swatch" data-color="#4d6b3c" style="--swatch:#4d6b3c" aria-label="Olive" title="Olive"></button>
+              <button type="button" class="swatch" data-color="#7a2d2d" style="--swatch:#7a2d2d" aria-label="Burgundy" title="Burgundy"></button>
+              <button type="button" class="swatch" data-color="#d8ccb9" style="--swatch:#d8ccb9" aria-label="Sand" title="Sand"></button>
+              <button type="button" class="swatch" data-color="#b9d2e8" style="--swatch:#b9d2e8" aria-label="Sky" title="Sky"></button>
             </div>
-          </details>
+          </div>
 
-          <details class="control-group">
-            <summary>
-              <span>Background</span>
-              <span class="chevron">⌄</span>
-            </summary>
+          <div class="panel-section">
+            <h3>Background</h3>
             <div class="icon-actions compact bg-actions">
               <label for="bgImageUpload" class="bg-upload-btn" title="Upload background" aria-label="Upload background">
                 <img src="/icons/bg-upload-cloud.png" alt="" />
                 <span>Upload</span>
               </label>
               <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" class="bg-reset-btn" type="button" title="Reverter background" aria-label="Reverter background">
-                Reverter
-              </button>
+              <button id="bgReset" class="bg-reset-btn" type="button" title="Reverter background" aria-label="Reverter background">Reverter</button>
               <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
             </div>
             <div class="bg-gray-strip" id="bgGrayStrip">
@@ -246,34 +69,41 @@
               <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg" title="Grunge olive"><img src="/backgrounds/bg-grunge-olive.jpg" alt="Grunge olive background" /></button>
               <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg" title="Brown light"><img src="/backgrounds/bg-brown-light.jpg" alt="Brown light background" /></button>
             </div>
-          </details>
+          </div>
+        </aside>
 
-          <details class="control-group">
-            <summary>
-              <span>Animation <span class="pro-pill">Pro</span></span>
-              <span class="chevron">⌄</span>
-            </summary>
+        <div class="viewer-shell">
+          <div class="viewer-top">
+            <p>Preview ao vivo</p>
+            <div class="viewer-tools">
+              <span>Arrasta para rodar</span>
+              <button id="fullscreenBtn" type="button">Fullscreen</button>
+            </div>
+          </div>
+          <div id="canvas-container"></div>
+        </div>
+
+        <aside class="panel panel-right">
+          <div class="panel-section">
+            <h3>Animation <span class="pro-pill">Pro</span></h3>
             <div class="pill-grid" id="garmentAnimGroup">
               <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><img class="pill-ico-img" src="/icons/anim-static.png" alt="" /></button>
               <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><img class="pill-ico-img" src="/icons/anim-walk.png" alt="" /></button>
               <button type="button" class="pill" data-garment-anim="waves"><span>Waves</span><img class="pill-ico-img" src="/icons/anim-knit.png" alt="" /></button>
               <button type="button" class="pill" data-garment-anim="knit"><span>Knit</span><img class="pill-ico-img" src="/icons/anim-waves.png" alt="" /></button>
             </div>
-          </details>
+          </div>
 
-          <details class="control-group">
-            <summary>
-              <span>Camera Animation <span class="pro-pill">Pro</span></span>
-              <span class="chevron">⌄</span>
-            </summary>
+          <div class="panel-section">
+            <h3>Camera Animation <span class="pro-pill">Pro</span></h3>
             <div class="icon-actions" id="cameraAnimGroup">
               <button type="button" class="icon-btn icon-btn-lg active" data-camera-anim="off" title="Off">⊘</button>
               <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="orbit" title="Orbit">⟳</button>
               <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="focus" title="Focus">⟲</button>
             </div>
-          </details>
+          </div>
 
-          <div id="advancedPanel" class="advanced-panel is-collapsed">
+          <div id="advancedPanel" class="advanced-panel">
             <div class="slider-group">
               <label for="designSize">Design Size</label>
               <div class="slider-row">
@@ -330,81 +160,9 @@
               </div>
             </div>
           </div>
-
-          <button id="exportBtn">Export <span class="btn-icon">▻</span></button>
         </aside>
-
-        <div class="viewer-shell">
-          <div class="viewer-top">
-            <p>Preview ao vivo</p>
-            <div class="viewer-tools">
-              <span>Arrasta para rodar</span>
-              <button id="fullscreenBtn" type="button">Fullscreen</button>
-            </div>
-          </div>
-          <div id="canvas-container"></div>
-        </div>
       </section>
-
-      <section class="social-proof">
-        <div class="section-head">
-          <p class="eyebrow">Resultados</p>
-          <h2>Feedback de equipas que ja usam mockups 3D</h2>
-        </div>
-        <div class="testimonials">
-          <article>
-            <p>"Reduzimos semanas de criacao visual para horas."</p>
-            <strong>Brand de streetwear</strong>
-          </article>
-          <article>
-            <p>"Conseguimos testar mais designs sem custos de producao."</p>
-            <strong>Loja print-on-demand</strong>
-          </article>
-          <article>
-            <p>"A pagina de produto ficou mais limpa e profissional."</p>
-            <strong>Ecommerce DTC</strong>
-          </article>
-        </div>
-      </section>
-
-      <section id="precos" class="pricing">
-        <div class="section-head">
-          <p class="eyebrow">Precos</p>
-          <h2>Comeca gratis e escala ao teu ritmo</h2>
-        </div>
-        <div class="price-grid">
-          <article>
-            <p class="plan">Starter</p>
-            <p class="price">0 EUR</p>
-            <ul>
-              <li>Mockups ilimitados</li>
-              <li>Export PNG</li>
-              <li>1 template ativo</li>
-            </ul>
-          </article>
-          <article class="featured">
-            <p class="plan">Pro</p>
-            <p class="price">19 EUR/mes</p>
-            <ul>
-              <li>Todos os templates</li>
-              <li>Maior resolucao</li>
-              <li>Roadmap prioritario</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="cta-final">
-        <h2>Pronto para criar a homepage da tua marca?</h2>
-        <p>Usa esta base para converter visitantes em clientes com mockups de qualidade.</p>
-        <a class="btn" href="#studio">Entrar no studio</a>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>ThreadLab - Mockups 3D para marcas de roupa</p>
-      <a href="#">Voltar ao topo</a>
-    </footer>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>
