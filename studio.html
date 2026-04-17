@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
@@ -7,180 +7,208 @@
   </head>
   <body class="studio-page">
     <div class="studio-shell">
-      <header class="studio-topbar">
-        <div class="topbar-left">
-          <a class="studio-home-link" href="/index.html">ThreadLab</a>
-          <span class="topbar-chip">Studio</span>
+      <aside class="left-rail">
+        <div class="rail-group">
+          <button type="button" class="rail-btn active" title="Home">?</button>
+          <button type="button" class="rail-btn" title="Tools">?</button>
+          <button type="button" class="rail-btn" title="Catalog">?</button>
+          <button type="button" class="rail-btn" title="Templates">?</button>
+          <button type="button" class="rail-btn" title="Upload">?</button>
         </div>
-
-        <div class="topbar-center">
-          <p>3D Clothing Mockup Editor</p>
+        <div class="rail-group">
+          <button type="button" class="rail-btn" id="fullscreenBtn" title="Fullscreen">?</button>
+          <button type="button" class="rail-btn" title="Reset view">?</button>
+          <button type="button" class="rail-btn" title="Help">?</button>
         </div>
+      </aside>
 
-        <div class="top-actions">
-          <label for="upload" class="top-upload">
-            <img src="/icons/bg-upload-cloud.png" alt="" />
-            <span>Upload Design</span>
-          </label>
-          <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
-          <button id="exportBtn" class="top-export" type="button">Export PNG</button>
-        </div>
-      </header>
+      <main class="studio-main">
+        <header class="topbar">
+          <div class="top-nav-pill">
+            <a class="studio-home-link" href="/index.html">THREADLAB</a>
+            <span>HOME</span>
+            <span>TOOLS</span>
+            <span>CATALOG</span>
+            <span>TEMPLATES</span>
+            <span>PROJECTS</span>
+          </div>
+          <div class="top-actions">
+            <label for="upload" class="top-upload">
+              <img src="/icons/bg-upload-cloud.png" alt="" />
+              <span>Upload Design</span>
+            </label>
+            <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
+            <button id="exportBtn" class="top-export" type="button">Export</button>
+          </div>
+        </header>
 
-      <section class="studio-workspace">
-        <aside class="panel panel-left">
-          <div class="panel-head">
-            <h2>Material</h2>
-            <span>Appearance</span>
+        <section class="workspace-grid">
+          <div class="viewer-shell">
+            <div class="viewer-top">
+              <p>3D Preview</p>
+              <span>Drag para rodar</span>
+            </div>
+            <div id="canvas-container"></div>
           </div>
 
-          <div class="panel-section">
-            <h3>Garment Color</h3>
-            <div class="icon-actions compact">
-              <label for="colorPicker" class="sr-only">Color</label>
-              <input type="color" id="colorPicker" value="#ffffff" />
+          <aside class="inspector">
+            <div class="inspector-head">
+              <p>Oversized Sweatshirt</p>
+              <span>•••</span>
             </div>
-            <div class="color-swatches" id="garmentSwatches">
-              <button type="button" class="swatch is-active" data-color="#ffffff" style="--swatch:#ffffff" aria-label="White" title="White"></button>
-              <button type="button" class="swatch" data-color="#111111" style="--swatch:#111111" aria-label="Black" title="Black"></button>
-              <button type="button" class="swatch" data-color="#8c8c8c" style="--swatch:#8c8c8c" aria-label="Gray" title="Gray"></button>
-              <button type="button" class="swatch" data-color="#1f2f5d" style="--swatch:#1f2f5d" aria-label="Navy" title="Navy"></button>
-              <button type="button" class="swatch" data-color="#4d6b3c" style="--swatch:#4d6b3c" aria-label="Olive" title="Olive"></button>
-              <button type="button" class="swatch" data-color="#7a2d2d" style="--swatch:#7a2d2d" aria-label="Burgundy" title="Burgundy"></button>
-              <button type="button" class="swatch" data-color="#d8ccb9" style="--swatch:#d8ccb9" aria-label="Sand" title="Sand"></button>
-              <button type="button" class="swatch" data-color="#b9d2e8" style="--swatch:#b9d2e8" aria-label="Sky" title="Sky"></button>
-            </div>
-          </div>
 
-          <div class="panel-section">
-            <h3>Background</h3>
-            <div class="icon-actions compact bg-actions">
-              <label for="bgImageUpload" class="bg-upload-btn" title="Upload background" aria-label="Upload background">
-                <img src="/icons/bg-upload-cloud.png" alt="" />
-                <span>Upload</span>
-              </label>
-              <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" class="bg-reset-btn" type="button" title="Reverter background" aria-label="Reverter background">Reset</button>
-              <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
-            </div>
-            <div class="bg-gray-strip" id="bgGrayStrip">
-              <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318" title="Graphite"></button>
-              <button type="button" class="gray-chip" data-bg-color="#21252d" style="--gray:#21252d" title="Slate"></button>
-              <button type="button" class="gray-chip" data-bg-color="#343943" style="--gray:#343943" title="Deep gray"></button>
-              <button type="button" class="gray-chip" data-bg-color="#515764" style="--gray:#515764" title="Steel"></button>
-              <button type="button" class="gray-chip" data-bg-color="#7b828f" style="--gray:#7b828f" title="Medium gray"></button>
-              <button type="button" class="gray-chip" data-bg-color="#b5bbc6" style="--gray:#b5bbc6" title="Light gray"></button>
-            </div>
-            <div class="bg-presets" id="bgPresetGroup">
-              <button type="button" class="bg-thumb is-active" data-bg-preset="dark" title="Default studio gradient"></button>
-              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-dark.jpg" title="Dark grunge"><img src="/backgrounds/bg-grunge-dark.jpg" alt="Dark grunge background" /></button>
-              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-concrete-gray.jpg" title="Concrete gray"><img src="/backgrounds/bg-concrete-gray.jpg" alt="Gray concrete background" /></button>
-              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-red.jpg" title="Grunge red"><img src="/backgrounds/bg-grunge-red.jpg" alt="Grunge red background" /></button>
-              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg" title="Grunge olive"><img src="/backgrounds/bg-grunge-olive.jpg" alt="Grunge olive background" /></button>
-              <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg" title="Brown light"><img src="/backgrounds/bg-brown-light.jpg" alt="Brown light background" /></button>
-            </div>
-          </div>
-        </aside>
-
-        <div class="viewer-shell">
-          <div class="viewer-top">
-            <p>Preview</p>
-            <div class="viewer-tools">
-              <span>Drag to rotate</span>
-              <button id="fullscreenBtn" type="button">Fullscreen</button>
-            </div>
-          </div>
-          <div id="canvas-container"></div>
-        </div>
-
-        <aside class="panel panel-right">
-          <div class="panel-head">
-            <h2>Motion</h2>
-            <span>Animation & camera</span>
-          </div>
-
-          <div class="panel-section">
-            <h3>Animation <span class="pro-pill">Pro</span></h3>
-            <div class="pill-grid" id="garmentAnimGroup">
-              <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><img class="pill-ico-img" src="/icons/anim-static.png" alt="" /></button>
-              <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><img class="pill-ico-img" src="/icons/anim-walk.png" alt="" /></button>
-              <button type="button" class="pill" data-garment-anim="waves"><span>Waves</span><img class="pill-ico-img" src="/icons/anim-knit.png" alt="" /></button>
-              <button type="button" class="pill" data-garment-anim="knit"><span>Knit</span><img class="pill-ico-img" src="/icons/anim-waves.png" alt="" /></button>
-            </div>
-          </div>
-
-          <div class="panel-section">
-            <h3>Camera Animation <span class="pro-pill">Pro</span></h3>
-            <div class="icon-actions" id="cameraAnimGroup">
-              <button type="button" class="icon-btn icon-btn-lg active" data-camera-anim="off" title="Off">Off</button>
-              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="orbit" title="Orbit">Orbit</button>
-              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="focus" title="Focus">Focus</button>
-            </div>
-          </div>
-
-          <div id="advancedPanel" class="advanced-panel">
-            <div class="panel-subhead">Advanced Controls</div>
-
-            <div class="slider-group">
-              <label for="designSize">Design Size</label>
-              <div class="slider-row">
-                <input type="range" id="designSize" min="50" max="800" value="400" />
-                <span class="val" id="sizeVal">400</span>
+            <details class="inspector-block" open>
+              <summary>Mockup</summary>
+              <div class="block-content">
+                <div class="control-label-row">
+                  <label for="colorPicker">Garment Color</label>
+                  <input type="color" id="colorPicker" value="#ffffff" />
+                </div>
+                <div class="color-swatches" id="garmentSwatches">
+                  <button type="button" class="swatch is-active" data-color="#ffffff" style="--swatch:#ffffff" aria-label="White" title="White"></button>
+                  <button type="button" class="swatch" data-color="#111111" style="--swatch:#111111" aria-label="Black" title="Black"></button>
+                  <button type="button" class="swatch" data-color="#8c8c8c" style="--swatch:#8c8c8c" aria-label="Gray" title="Gray"></button>
+                  <button type="button" class="swatch" data-color="#1f2f5d" style="--swatch:#1f2f5d" aria-label="Navy" title="Navy"></button>
+                  <button type="button" class="swatch" data-color="#4d6b3c" style="--swatch:#4d6b3c" aria-label="Olive" title="Olive"></button>
+                  <button type="button" class="swatch" data-color="#7a2d2d" style="--swatch:#7a2d2d" aria-label="Burgundy" title="Burgundy"></button>
+                  <button type="button" class="swatch" data-color="#d8ccb9" style="--swatch:#d8ccb9" aria-label="Sand" title="Sand"></button>
+                  <button type="button" class="swatch" data-color="#b9d2e8" style="--swatch:#b9d2e8" aria-label="Sky" title="Sky"></button>
+                </div>
               </div>
-            </div>
+            </details>
 
-            <div class="slider-group">
-              <label for="designX">Position X</label>
-              <div class="slider-row">
-                <input type="range" id="designX" min="-500" max="500" value="0" />
-                <span class="val" id="xVal">0</span>
+            <details class="inspector-block" open>
+              <summary>Background</summary>
+              <div class="block-content">
+                <div class="bg-actions">
+                  <label for="bgImageUpload" class="bg-upload-btn" title="Upload background" aria-label="Upload background">
+                    <img src="/icons/bg-upload-cloud.png" alt="" />
+                    <span>Upload</span>
+                  </label>
+                  <input type="file" id="bgImageUpload" accept="image/*" hidden />
+                  <button id="bgReset" class="bg-reset-btn" type="button">Reset</button>
+                  <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
+                </div>
+                <div class="bg-gray-strip" id="bgGrayStrip">
+                  <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318" title="Graphite"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#21252d" style="--gray:#21252d" title="Slate"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#343943" style="--gray:#343943" title="Deep gray"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#515764" style="--gray:#515764" title="Steel"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#7b828f" style="--gray:#7b828f" title="Medium gray"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#b5bbc6" style="--gray:#b5bbc6" title="Light gray"></button>
+                </div>
+                <div class="bg-presets" id="bgPresetGroup">
+                  <button type="button" class="bg-thumb is-active" data-bg-preset="dark" title="Default studio gradient"></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-dark.jpg" title="Dark grunge"><img src="/backgrounds/bg-grunge-dark.jpg" alt="Dark grunge background" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-concrete-gray.jpg" title="Concrete gray"><img src="/backgrounds/bg-concrete-gray.jpg" alt="Gray concrete background" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-red.jpg" title="Grunge red"><img src="/backgrounds/bg-grunge-red.jpg" alt="Grunge red background" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg" title="Grunge olive"><img src="/backgrounds/bg-grunge-olive.jpg" alt="Grunge olive background" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg" title="Brown light"><img src="/backgrounds/bg-brown-light.jpg" alt="Brown light background" /></button>
+                </div>
               </div>
-            </div>
+            </details>
 
-            <div class="slider-group">
-              <label for="designY">Position Y</label>
-              <div class="slider-row">
-                <input type="range" id="designY" min="-500" max="500" value="-50" />
-                <span class="val" id="yVal">-50</span>
+            <details class="inspector-block" open>
+              <summary>Animation <span class="pro-pill">Pro</span></summary>
+              <div class="block-content">
+                <div class="pill-grid" id="garmentAnimGroup">
+                  <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><img class="pill-ico-img" src="/icons/anim-static.png" alt="" /></button>
+                  <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><img class="pill-ico-img" src="/icons/anim-walk.png" alt="" /></button>
+                  <button type="button" class="pill" data-garment-anim="waves"><span>Waves</span><img class="pill-ico-img" src="/icons/anim-knit.png" alt="" /></button>
+                  <button type="button" class="pill" data-garment-anim="knit"><span>Knit</span><img class="pill-ico-img" src="/icons/anim-waves.png" alt="" /></button>
+                </div>
               </div>
-            </div>
+            </details>
 
-            <div class="slider-group">
-              <label for="designRotate">Rotation</label>
-              <div class="slider-row">
-                <input type="range" id="designRotate" min="-180" max="180" value="0" />
-                <span class="val" id="rotateVal">0</span>
+            <details class="inspector-block" open>
+              <summary>Camera Animation <span class="pro-pill">Pro</span></summary>
+              <div class="block-content">
+                <div class="camera-actions" id="cameraAnimGroup">
+                  <button type="button" class="icon-btn active" data-camera-anim="off" title="Off">Off</button>
+                  <button type="button" class="icon-btn" data-camera-anim="orbit" title="Orbit">Orbit</button>
+                  <button type="button" class="icon-btn" data-camera-anim="focus" title="Focus">Focus</button>
+                </div>
               </div>
-            </div>
+            </details>
 
-            <div class="slider-group">
-              <label for="designOpacity">Opacity</label>
-              <div class="slider-row">
-                <input type="range" id="designOpacity" min="10" max="100" value="100" />
-                <span class="val" id="opacityVal">100</span>
-              </div>
-            </div>
+            <details class="inspector-block" open>
+              <summary>Position & Rotation</summary>
+              <div id="advancedPanel" class="block-content advanced-panel">
+                <div class="slider-group">
+                  <label for="designSize">Design Size</label>
+                  <div class="slider-row">
+                    <input type="range" id="designSize" min="50" max="800" value="400" />
+                    <span class="val" id="sizeVal">400</span>
+                  </div>
+                </div>
 
-            <div class="slider-group">
-              <label for="acidWash">Acid Wash</label>
-              <div class="slider-row">
-                <input type="range" id="acidWash" min="0" max="100" value="0" />
-                <span class="val" id="acidVal">0</span>
-              </div>
-            </div>
+                <div class="slider-group">
+                  <label for="designX">Position X</label>
+                  <div class="slider-row">
+                    <input type="range" id="designX" min="-500" max="500" value="0" />
+                    <span class="val" id="xVal">0</span>
+                  </div>
+                </div>
 
-            <div class="slider-group">
-              <label for="puffPrint">Puff Print</label>
-              <div class="slider-row">
-                <input type="range" id="puffPrint" min="0" max="100" value="0" />
-                <span class="val" id="puffVal">0</span>
+                <div class="slider-group">
+                  <label for="designY">Position Y</label>
+                  <div class="slider-row">
+                    <input type="range" id="designY" min="-500" max="500" value="-50" />
+                    <span class="val" id="yVal">-50</span>
+                  </div>
+                </div>
+
+                <div class="slider-group">
+                  <label for="designRotate">Rotation</label>
+                  <div class="slider-row">
+                    <input type="range" id="designRotate" min="-180" max="180" value="0" />
+                    <span class="val" id="rotateVal">0</span>
+                  </div>
+                </div>
+
+                <div class="slider-group">
+                  <label for="designOpacity">Opacity</label>
+                  <div class="slider-row">
+                    <input type="range" id="designOpacity" min="10" max="100" value="100" />
+                    <span class="val" id="opacityVal">100</span>
+                  </div>
+                </div>
+
+                <div class="slider-group">
+                  <label for="acidWash">Acid Wash</label>
+                  <div class="slider-row">
+                    <input type="range" id="acidWash" min="0" max="100" value="0" />
+                    <span class="val" id="acidVal">0</span>
+                  </div>
+                </div>
+
+                <div class="slider-group">
+                  <label for="puffPrint">Puff Print</label>
+                  <div class="slider-row">
+                    <input type="range" id="puffPrint" min="0" max="100" value="0" />
+                    <span class="val" id="puffVal">0</span>
+                  </div>
+                </div>
               </div>
-            </div>
+            </details>
+          </aside>
+        </section>
+
+        <footer class="timeline-bar">
+          <button type="button" class="play-btn">?</button>
+          <div class="timeline-track">
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
           </div>
-        </aside>
-      </section>
+          <span class="timeline-time">00:10</span>
+        </footer>
+      </main>
     </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
