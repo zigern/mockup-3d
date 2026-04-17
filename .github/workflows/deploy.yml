@@ -29,7 +29,10 @@ jobs:
       - name: Normalize Hostinger connection values
         shell: bash
         run: |
-          RAW_HOST="${{ secrets.SFTP_HOST }}"
+          RAW_HOST="${{ secrets.SSH_HOST }}"
+          if [ -z "$RAW_HOST" ]; then
+            RAW_HOST="${{ secrets.SFTP_HOST }}"
+          fi
           HOST="${RAW_HOST#ftp://}"
           HOST="${HOST#ftps://}"
           HOST="${HOST#sftp://}"
@@ -37,15 +40,28 @@ jobs:
           HOST="${HOST%%/*}"
           HOST="$(echo "$HOST" | xargs)"
 
-          echo "DEPLOY_HOST=$HOST" >> "$GITHUB_ENV"
+          RAW_PORT="${{ secrets.SSH_PORT }}"
+          if [ -z "$RAW_PORT" ]; then
+            RAW_PORT="${{ secrets.SFTP_PORT }}"
+          fi
+          PORT="$(echo "$RAW_PORT" | xargs)"
+          if [ -z "$PORT" ] || [ "$PORT" = "21" ]; then
+            PORT="65002"
+          fi
 
-      - name: Deploy dist to Hostinger domain public_html via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+          echo "DEPLOY_HOST=$HOST" >> "$GITHUB_ENV"
+          echo "DEPLOY_PORT=$PORT" >> "$GITHUB_ENV"
+
+      - name: Deploy dist to Hostinger domain public_html via SSH/SCP
+        uses: appleboy/scp-action@v0.1.7
         with:
           server: ${{ env.DEPLOY_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./dist/
-          server-dir: /public_html/
+          username: ${{ secrets.SSH_USERNAME || secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD || secrets.SFTP_PASSWORD }}
+          port: ${{ env.DEPLOY_PORT }}
+          timeout: 120s
+          command_timeout: 6m
+          source: "dist/*"
+          target: "/home/${{ secrets.SSH_USERNAME || secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/"
+          strip_components: 1
+          overwrite: true
