@@ -56,6 +56,13 @@ body.studio-page {
   font-size: 22px;
 }
 
+.studio-home-link {
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+}
+
 .brand-wrap span {
   color: #9ea4bf;
   font-size: 13px;

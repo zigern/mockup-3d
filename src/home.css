@@ -1,0 +1,118 @@
+﻿:root {
+  --bg: #0f1119;
+  --card: #181b27;
+  --line: #2a2f42;
+  --ink: #f3f5ff;
+  --muted: #a5adc8;
+  --brand: #5c56e9;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Manrope, system-ui, -apple-system, Segoe UI, sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(100, 93, 255, 0.22), transparent 38%),
+    radial-gradient(circle at 90% 85%, rgba(48, 127, 255, 0.2), transparent 42%),
+    var(--bg);
+  color: var(--ink);
+}
+
+.home-wrap {
+  width: min(1100px, calc(100% - 32px));
+  margin: 24px auto;
+  display: grid;
+  gap: 16px;
+}
+
+.hero-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(160deg, #1b1f2d, #151824);
+  padding: clamp(20px, 4vw, 40px);
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #bfc6e9;
+  font-size: 12px;
+}
+
+h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(30px, 5vw, 58px);
+  line-height: 0.98;
+  max-width: 12ch;
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(15px, 1.7vw, 19px);
+  max-width: 58ch;
+}
+
+.cta-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  height: 42px;
+  border-radius: 999px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  font-weight: 700;
+}
+
+.btn.primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn.ghost {
+  border-color: #4a5172;
+  color: #e9ecff;
+  background: #242a3f;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.info-grid article {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #141826;
+  padding: 14px;
+}
+
+.info-grid h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.info-grid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
