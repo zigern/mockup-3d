@@ -37,33 +37,15 @@ jobs:
           HOST="${HOST%%/*}"
           HOST="$(echo "$HOST" | xargs)"
 
-          RAW_PORT="${{ secrets.SFTP_PORT }}"
-          PORT="$(echo "$RAW_PORT" | xargs)"
-          if [ -z "$PORT" ]; then
-            PORT="22"
-          fi
-
           echo "DEPLOY_HOST=$HOST" >> "$GITHUB_ENV"
-          echo "DEPLOY_PORT=$PORT" >> "$GITHUB_ENV"
 
-      - name: Deploy dist to Hostinger domain public_html (fast retry)
-        uses: nick-fields/retry@v3
+      - name: Deploy dist to Hostinger domain public_html via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          timeout_minutes: 8
-          max_attempts: 2
-          retry_wait_seconds: 8
-          command: >-
-            docker run --rm
-            -e INPUT_HOST='${{ env.DEPLOY_HOST }}'
-            -e INPUT_USERNAME='${{ secrets.SFTP_USERNAME }}'
-            -e INPUT_PASSWORD='${{ secrets.SFTP_PASSWORD }}'
-            -e INPUT_PORT='${{ env.DEPLOY_PORT }}'
-            -e INPUT_TIMEOUT='90s'
-            -e INPUT_COMMAND_TIMEOUT='4m'
-            -e INPUT_SOURCE='dist/*'
-            -e INPUT_TARGET='/home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/'
-            -e INPUT_STRIP_COMPONENTS='1'
-            -e INPUT_OVERWRITE='true'
-            -v "$PWD":/github/workspace
-            -w /github/workspace
-            ghcr.io/appleboy/drone-scp:1.6.14
+          server: ${{ env.DEPLOY_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
