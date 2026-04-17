@@ -26,35 +26,16 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy dist to Hostinger domain public_html (retry)
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 20
-          max_attempts: 3
-          retry_wait_seconds: 20
-          command: >-
-            docker run --rm
-            -e INPUT_HOST='${{ secrets.SFTP_HOST }}'
-            -e INPUT_USERNAME='${{ secrets.SFTP_USERNAME }}'
-            -e INPUT_PASSWORD='${{ secrets.SFTP_PASSWORD }}'
-            -e INPUT_PORT='${{ secrets.SFTP_PORT }}'
-            -e INPUT_TIMEOUT='300s'
-            -e INPUT_COMMAND_TIMEOUT='20m'
-            -e INPUT_SOURCE='dist/*'
-            -e INPUT_TARGET='/home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/'
-            -e INPUT_STRIP_COMPONENTS='1'
-            -e INPUT_OVERWRITE='true'
-            -v "$PWD":/github/workspace
-            -w /github/workspace
-            ghcr.io/appleboy/drone-scp:1.6.14
-
-      - name: Verify deployed index on server
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy dist to Hostinger domain public_html
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT }}
-          script: |
-            ls -la /home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/
-            head -n 5 /home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/index.html
+          timeout: 120s
+          command_timeout: 6m
+          source: "dist/*"
+          target: "/home/${{ secrets.SFTP_USERNAME }}/domains/lightpink-ibex-111892.hostingersite.com/public_html/"
+          strip_components: 1
+          overwrite: true
