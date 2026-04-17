@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
@@ -8,22 +8,32 @@
   <body class="studio-page">
     <div class="studio-shell">
       <header class="studio-topbar">
-        <div class="brand-wrap">
+        <div class="topbar-left">
           <a class="studio-home-link" href="/index.html">ThreadLab</a>
-          <span>3D Studio</span>
+          <span class="topbar-chip">Studio</span>
         </div>
+
+        <div class="topbar-center">
+          <p>3D Clothing Mockup Editor</p>
+        </div>
+
         <div class="top-actions">
           <label for="upload" class="top-upload">
             <img src="/icons/bg-upload-cloud.png" alt="" />
             <span>Upload Design</span>
           </label>
           <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
-          <button id="exportBtn" class="top-export" type="button">Export</button>
+          <button id="exportBtn" class="top-export" type="button">Export PNG</button>
         </div>
       </header>
 
       <section class="studio-workspace">
         <aside class="panel panel-left">
+          <div class="panel-head">
+            <h2>Material</h2>
+            <span>Appearance</span>
+          </div>
+
           <div class="panel-section">
             <h3>Garment Color</h3>
             <div class="icon-actions compact">
@@ -50,7 +60,7 @@
                 <span>Upload</span>
               </label>
               <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" class="bg-reset-btn" type="button" title="Reverter background" aria-label="Reverter background">Reverter</button>
+              <button id="bgReset" class="bg-reset-btn" type="button" title="Reverter background" aria-label="Reverter background">Reset</button>
               <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
             </div>
             <div class="bg-gray-strip" id="bgGrayStrip">
@@ -74,9 +84,9 @@
 
         <div class="viewer-shell">
           <div class="viewer-top">
-            <p>Preview ao vivo</p>
+            <p>Preview</p>
             <div class="viewer-tools">
-              <span>Arrasta para rodar</span>
+              <span>Drag to rotate</span>
               <button id="fullscreenBtn" type="button">Fullscreen</button>
             </div>
           </div>
@@ -84,6 +94,11 @@
         </div>
 
         <aside class="panel panel-right">
+          <div class="panel-head">
+            <h2>Motion</h2>
+            <span>Animation & camera</span>
+          </div>
+
           <div class="panel-section">
             <h3>Animation <span class="pro-pill">Pro</span></h3>
             <div class="pill-grid" id="garmentAnimGroup">
@@ -97,13 +112,15 @@
           <div class="panel-section">
             <h3>Camera Animation <span class="pro-pill">Pro</span></h3>
             <div class="icon-actions" id="cameraAnimGroup">
-              <button type="button" class="icon-btn icon-btn-lg active" data-camera-anim="off" title="Off">⊘</button>
-              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="orbit" title="Orbit">⟳</button>
-              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="focus" title="Focus">⟲</button>
+              <button type="button" class="icon-btn icon-btn-lg active" data-camera-anim="off" title="Off">Off</button>
+              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="orbit" title="Orbit">Orbit</button>
+              <button type="button" class="icon-btn icon-btn-lg" data-camera-anim="focus" title="Focus">Focus</button>
             </div>
           </div>
 
           <div id="advancedPanel" class="advanced-panel">
+            <div class="panel-subhead">Advanced Controls</div>
+
             <div class="slider-group">
               <label for="designSize">Design Size</label>
               <div class="slider-row">
