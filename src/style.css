@@ -542,6 +542,7 @@ main {
 
 .bg-actions {
   gap: 10px;
+  margin-bottom: 8px;
 }
 
 .bg-tool-btn {
@@ -565,8 +566,41 @@ main {
   stroke-linejoin: round;
 }
 
+.bg-tool-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: invert(1);
+}
+
 .bg-tool-btn:hover {
   background: #8f8f8f;
+}
+
+.bg-gray-strip {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  margin: 6px 0 10px;
+}
+
+.gray-chip {
+  border: 2px solid #d6d6d6;
+  border-radius: 8px;
+  height: 28px;
+  background: var(--gray, #222);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gray-chip:hover {
+  transform: translateY(-1px);
+}
+
+.gray-chip.is-active {
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.14);
 }
 
 .bg-presets {

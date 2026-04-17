@@ -222,12 +222,7 @@
             </summary>
             <div class="icon-actions bg-actions">
               <label for="bgImageUpload" class="icon-btn bg-tool-btn" title="Upload background" aria-label="Upload background">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 18.5A2.5 2.5 0 0 0 6.5 21h11A2.5 2.5 0 0 0 20 18.5v-7A2.5 2.5 0 0 0 17.5 9H15l-1.2-2H10.2L9 9H6.5A2.5 2.5 0 0 0 4 11.5v7z" />
-                  <path d="M12 8V3.5" />
-                  <path d="M9.8 5.7 12 3.5l2.2 2.2" />
-                  <circle cx="12" cy="15.2" r="3.2" />
-                </svg>
+                <img src="/icons/bg-upload-cloud.png" alt="" />
               </label>
               <input type="file" id="bgImageUpload" accept="image/*" hidden />
               <button id="bgReset" class="icon-btn bg-tool-btn" type="button" title="Reset background" aria-label="Reset background">
@@ -236,8 +231,14 @@
                   <path d="M4 4.8v4.6h4.6" />
                 </svg>
               </button>
-              <span class="palette-dot" aria-hidden="true"></span>
-              <input id="bgColor" class="mini-color" type="color" value="#1f1f24" title="Background color" />
+            </div>
+            <div class="bg-gray-strip" id="bgGrayStrip">
+              <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318" title="Graphite"></button>
+              <button type="button" class="gray-chip" data-bg-color="#21252d" style="--gray:#21252d" title="Slate"></button>
+              <button type="button" class="gray-chip" data-bg-color="#343943" style="--gray:#343943" title="Deep gray"></button>
+              <button type="button" class="gray-chip" data-bg-color="#515764" style="--gray:#515764" title="Steel"></button>
+              <button type="button" class="gray-chip" data-bg-color="#7b828f" style="--gray:#7b828f" title="Medium gray"></button>
+              <button type="button" class="gray-chip" data-bg-color="#b5bbc6" style="--gray:#b5bbc6" title="Light gray"></button>
             </div>
             <div class="bg-presets" id="bgPresetGroup">
               <button type="button" class="bg-thumb is-active" data-bg-preset="dark" title="Default studio gradient"></button>

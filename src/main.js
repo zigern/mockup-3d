@@ -271,10 +271,10 @@ bindSlider('puffPrint', 'puffVal', (value) => {
   state.puffPrint = value;
 });
 
-const bgColor = document.getElementById('bgColor');
 const bgImageUpload = document.getElementById('bgImageUpload');
 const bgReset = document.getElementById('bgReset');
 const bgPresetGroup = document.getElementById('bgPresetGroup');
+const bgGrayStrip = document.getElementById('bgGrayStrip');
 let currentBackgroundObjectUrl = null;
 
 function clearBackgroundObjectUrl() {
@@ -296,11 +296,18 @@ function setActiveBackgroundThumb(activeSelector) {
   });
 }
 
-bgColor.addEventListener('input', (event) => {
-  clearBackgroundObjectUrl();
-  container.style.background = event.target.value;
-  setActiveBackgroundThumb('');
-});
+function setActiveGrayChip(activeSelector) {
+  if (!bgGrayStrip) return;
+  if (!activeSelector) {
+    bgGrayStrip.querySelectorAll('.gray-chip').forEach((button) => {
+      button.classList.remove('is-active');
+    });
+    return;
+  }
+  bgGrayStrip.querySelectorAll('.gray-chip').forEach((button) => {
+    button.classList.toggle('is-active', button.matches(activeSelector));
+  });
+}
 
 bgImageUpload.addEventListener('change', (event) => {
   const [file] = event.target.files;
@@ -311,13 +318,14 @@ bgImageUpload.addEventListener('change', (event) => {
   currentBackgroundObjectUrl = imageUrl;
   container.style.background = `center / cover no-repeat url("${imageUrl}")`;
   setActiveBackgroundThumb('');
+  setActiveGrayChip('');
 });
 
 bgReset.addEventListener('click', () => {
   clearBackgroundObjectUrl();
-  bgColor.value = '#1f1f24';
   applyBackgroundPreset('dark');
   setActiveBackgroundThumb('[data-bg-preset="dark"]');
+  setActiveGrayChip('');
 });
 
 if (bgPresetGroup) {
@@ -333,11 +341,23 @@ if (bgPresetGroup) {
         container.style.background = `center / cover no-repeat url("${image}")`;
       }
 
+      setActiveGrayChip('');
       setActiveBackgroundThumb(
         button.dataset.bgPreset
           ? `[data-bg-preset="${button.dataset.bgPreset}"]`
           : `[data-bg-image="${button.dataset.bgImage}"]`,
       );
+    });
+  });
+}
+
+if (bgGrayStrip) {
+  bgGrayStrip.querySelectorAll('.gray-chip').forEach((button) => {
+    button.addEventListener('click', () => {
+      clearBackgroundObjectUrl();
+      container.style.background = button.dataset.bgColor;
+      setActiveBackgroundThumb('');
+      setActiveGrayChip(`[data-bg-color="${button.dataset.bgColor}"]`);
     });
   });
 }
