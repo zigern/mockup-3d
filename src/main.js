@@ -272,7 +272,6 @@ bindSlider('puffPrint', 'puffVal', (value) => {
 });
 
 const bgImageUpload = document.getElementById('bgImageUpload');
-const bgReset = document.getElementById('bgReset');
 const bgColor = document.getElementById('bgColor');
 const bgPresetGroup = document.getElementById('bgPresetGroup');
 const bgGrayStrip = document.getElementById('bgGrayStrip');
@@ -319,14 +318,6 @@ bgImageUpload.addEventListener('change', (event) => {
   currentBackgroundObjectUrl = imageUrl;
   container.style.background = `center / cover no-repeat url("${imageUrl}")`;
   setActiveBackgroundThumb('');
-  setActiveGrayChip('');
-});
-
-bgReset.addEventListener('click', () => {
-  clearBackgroundObjectUrl();
-  applyBackgroundPreset('dark');
-  if (bgColor) bgColor.value = '#1f1f24';
-  setActiveBackgroundThumb('[data-bg-preset="dark"]');
   setActiveGrayChip('');
 });
 

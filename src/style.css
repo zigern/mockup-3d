@@ -544,42 +544,36 @@ main {
   gap: 10px;
   margin-bottom: 8px;
   justify-content: flex-start;
+  align-items: center;
 }
 
 .bg-upload-btn {
-  width: 18px;
-  height: 18px;
+  min-width: 98px;
+  height: 34px;
+  padding: 0 12px;
   border-radius: 999px;
+  border: 1px solid #bbb;
+  background: #6d6d6d;
+  color: #fff;
   display: inline-flex;
   align-items: center;
+  gap: 7px;
   justify-content: center;
-  background: transparent;
   cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .bg-upload-btn img {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   object-fit: contain;
-  filter: invert(0.18);
+  filter: invert(1);
 }
 
-.palette-dot-btn {
-  border: 0;
-  background: transparent;
-  padding: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.palette-dot-btn .palette-dot {
-  width: 18px;
-  height: 18px;
+.bg-upload-btn:hover {
+  background: #5e5e5e;
 }
 
 .bg-gray-strip {
