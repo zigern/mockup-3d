@@ -221,15 +221,12 @@
               <span class="chevron">⌄</span>
             </summary>
             <div class="icon-actions bg-actions">
-              <label for="bgImageUpload" class="icon-btn bg-tool-btn" title="Upload background" aria-label="Upload background">
-                <img src="/icons/bg-upload-cloud.png" alt="" />
+              <label for="bgImageUpload" class="bg-color-wheel" title="Upload background" aria-label="Upload background">
+                <span class="sr-only">Upload background</span>
               </label>
               <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" class="icon-btn bg-tool-btn" type="button" title="Reset background" aria-label="Reset background">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 12a8 8 0 1 0 2.4-5.7" />
-                  <path d="M4 4.8v4.6h4.6" />
-                </svg>
+              <button id="bgReset" class="palette-dot-btn" type="button" title="Reset background" aria-label="Reset background">
+                <span class="palette-dot" aria-hidden="true"></span>
               </button>
               <label for="bgColor" class="bg-color-pill" title="Custom background color">
                 <input id="bgColor" class="bg-color-picker" type="color" value="#1f1f24" />

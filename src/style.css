@@ -546,36 +546,31 @@ main {
   justify-content: flex-start;
 }
 
-.bg-tool-btn {
-  min-width: 46px;
-  width: 46px;
-  height: 46px;
+.bg-color-wheel {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: conic-gradient(#ff2f2f, #ffcd1e, #2bd85f, #23b5ff, #6c49ff, #ff2fb0, #ff2f2f);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.palette-dot-btn {
+  border: 0;
+  background: transparent;
   padding: 0;
-  border-radius: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-.bg-tool-btn svg {
-  width: 24px;
-  height: 24px;
-  stroke: #fff;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.bg-tool-btn img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  filter: invert(1);
-}
-
-.bg-tool-btn:hover {
-  background: #8f8f8f;
+.palette-dot-btn .palette-dot {
+  width: 18px;
+  height: 18px;
 }
 
 .bg-gray-strip {
@@ -606,11 +601,11 @@ main {
 
 .bg-color-pill {
   --bg-picker-color: #1f1f24;
-  margin-left: auto;
+  margin-left: 2px;
   width: 120px;
-  height: 40px;
-  border-radius: 10px;
-  border: 2px solid #d7d7d7;
+  height: 36px;
+  border-radius: 8px;
+  border: 2px solid #d0d0d0;
   background: var(--bg-picker-color);
   position: relative;
   overflow: hidden;
