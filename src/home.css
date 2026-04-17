@@ -173,6 +173,104 @@ h1 {
   50% { transform: translateY(-8px) translateX(10px); }
 }
 
+.catalog-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(160deg, #1b1f2d, #151824);
+  padding: clamp(20px, 3.5vw, 32px);
+}
+
+.catalog-head {
+  text-align: center;
+}
+
+.catalog-head h2 {
+  margin: 0;
+  font-size: clamp(30px, 4.4vw, 56px);
+  line-height: 1.02;
+}
+
+.catalog-head p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.models-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.model-card {
+  position: relative;
+  min-height: 300px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: #d7d7d7;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model-card img {
+  width: 90%;
+  height: 86%;
+  object-fit: contain;
+  filter: grayscale(0.08) brightness(1.06);
+}
+
+.model-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #5d626e;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.model-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(220, 220, 220, 0.92);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.model-cta {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  text-decoration: none;
+  color: #4c4f55;
+  background: #f2f2f2;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  padding: 9px 16px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.model-variant-1 { transform: scale(0.92); }
+.model-variant-2 { transform: scale(0.95) translateY(-2px); }
+.model-variant-3 { transform: scale(0.9) translateY(2px); }
+.model-variant-4 { transform: scale(0.98); }
+.model-variant-5 { transform: scale(0.9) translateY(4px); }
+.model-variant-6 { transform: scale(1.02); }
+
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -205,6 +303,10 @@ h1 {
   .hero-media,
   .hero-media video {
     min-height: 240px;
+  }
+
+  .models-grid {
+    grid-template-columns: 1fr;
   }
 
   .info-grid {
