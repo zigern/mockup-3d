@@ -273,6 +273,7 @@ bindSlider('puffPrint', 'puffVal', (value) => {
 
 const bgImageUpload = document.getElementById('bgImageUpload');
 const bgReset = document.getElementById('bgReset');
+const bgColor = document.getElementById('bgColor');
 const bgPresetGroup = document.getElementById('bgPresetGroup');
 const bgGrayStrip = document.getElementById('bgGrayStrip');
 let currentBackgroundObjectUrl = null;
@@ -324,6 +325,7 @@ bgImageUpload.addEventListener('change', (event) => {
 bgReset.addEventListener('click', () => {
   clearBackgroundObjectUrl();
   applyBackgroundPreset('dark');
+  if (bgColor) bgColor.value = '#1f1f24';
   setActiveBackgroundThumb('[data-bg-preset="dark"]');
   setActiveGrayChip('');
 });
@@ -356,9 +358,19 @@ if (bgGrayStrip) {
     button.addEventListener('click', () => {
       clearBackgroundObjectUrl();
       container.style.background = button.dataset.bgColor;
+      if (bgColor) bgColor.value = button.dataset.bgColor;
       setActiveBackgroundThumb('');
       setActiveGrayChip(`[data-bg-color="${button.dataset.bgColor}"]`);
     });
+  });
+}
+
+if (bgColor) {
+  bgColor.addEventListener('input', (event) => {
+    clearBackgroundObjectUrl();
+    container.style.background = event.target.value;
+    setActiveBackgroundThumb('');
+    setActiveGrayChip('');
   });
 }
 

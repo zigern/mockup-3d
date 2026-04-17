@@ -603,6 +603,58 @@ main {
   box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.14);
 }
 
+.bg-custom-row {
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bg-custom-row span {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #4e473e;
+  font-weight: 700;
+}
+
+.bg-color-picker-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 2px solid #d7d7d7;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.bg-color-picker-wrap:hover {
+  border-color: #9a9a9a;
+}
+
+.bg-color-picker {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+}
+
+.bg-color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 999px;
+}
+
+.bg-color-picker::-webkit-color-swatch {
+  border: 0;
+  border-radius: 999px;
+}
+
 .bg-presets {
   margin-top: 10px;
   display: grid;
