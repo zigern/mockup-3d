@@ -186,6 +186,8 @@ body.studio-page {
   background: #1b1f2a;
   padding: 10px;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-head {
@@ -216,16 +218,24 @@ body.studio-page {
 .panel-block summary {
   list-style: none;
   cursor: pointer;
-  height: 48px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #cfd5e8;
+  color: #b8bece;
   font-weight: 700;
+  font-size: 15px;
 }
 
 .panel-block summary::-webkit-details-marker { display: none; }
 .sum-left { display: inline-flex; align-items: center; gap: 8px; }
+.sum-ico {
+  width: 20px;
+  display: inline-flex;
+  justify-content: center;
+  color: #aab1c4;
+}
+.sum-arrow { color: #aab1c4; }
 
 .panel-body { padding: 0 0 12px; }
 
@@ -457,6 +467,30 @@ input[type='color'] {
 }
 
 .support-controls { display: none; }
+
+.inspector-footer {
+  margin-top: auto;
+  border-top: 1px solid #2a2f3c;
+  padding-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mode-btn {
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid #363c4e;
+  background: #2b303d;
+  color: #8f95a9;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+.mode-btn.active {
+  color: #c9cfdf;
+}
 
 .pill-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px; }
 
