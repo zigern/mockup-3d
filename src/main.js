@@ -70,6 +70,22 @@ const garmentMaterials = [];
 let modelRoot = null;
 const clock = new THREE.Clock();
 
+function attachFallbackModel() {
+  if (modelRoot) return;
+  const geo = new THREE.SphereGeometry(0.8, 48, 32);
+  const mat = new THREE.MeshPhysicalMaterial({
+    map: shirtTexture,
+    roughness: 0.82,
+    metalness: 0,
+    clearcoat: 0,
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  scene.add(mesh);
+  modelRoot = mesh;
+  state.baseModelY = 0;
+  garmentMaterials.push(mat);
+}
+
 function setActiveButton(groupSelector, activeSelector) {
   document.querySelectorAll(groupSelector).forEach((button) => {
     button.classList.toggle('active', button.matches(activeSelector));
@@ -204,11 +220,14 @@ loader.load('/scene.gltf', (gltf) => {
       garmentMaterials.push(material);
     }
   });
+}, undefined, () => {
+  attachFallbackModel();
 });
 
 function bindSlider(id, valueId, handler) {
   const input = document.getElementById(id);
   const valueNode = document.getElementById(valueId);
+  if (!input || !valueNode) return;
   input.addEventListener('input', (event) => {
     const value = parseInt(event.target.value, 10);
     valueNode.textContent = value;
@@ -217,7 +236,8 @@ function bindSlider(id, valueId, handler) {
   });
 }
 
-document.getElementById('upload').addEventListener('change', (event) => {
+const uploadInput = document.getElementById('upload');
+if (uploadInput) uploadInput.addEventListener('change', (event) => {
   const [file] = event.target.files;
   if (!file) return;
 
@@ -229,7 +249,7 @@ document.getElementById('upload').addEventListener('change', (event) => {
   img.src = URL.createObjectURL(file);
 });
 
-colorPicker.addEventListener('input', (event) => {
+if (colorPicker) colorPicker.addEventListener('input', (event) => {
   setGarmentColor(event.target.value);
 });
 
@@ -322,7 +342,7 @@ function setActiveGrayChip(activeSelector) {
   });
 }
 
-bgImageUpload.addEventListener('change', (event) => {
+if (bgImageUpload) bgImageUpload.addEventListener('change', (event) => {
   const [file] = event.target.files;
   if (!file) return;
 
@@ -334,7 +354,7 @@ bgImageUpload.addEventListener('change', (event) => {
   setActiveGrayChip('');
 });
 
-bgReset.addEventListener('click', () => {
+if (bgReset) bgReset.addEventListener('click', () => {
   clearBackgroundObjectUrl();
   applyBackgroundPreset('dark');
   if (bgColor) bgColor.value = '#1f1f24';
@@ -405,7 +425,7 @@ document.querySelectorAll('[data-camera-anim]').forEach((button) => {
   });
 });
 
-fullscreenBtn.addEventListener('click', async () => {
+if (fullscreenBtn) fullscreenBtn.addEventListener('click', async () => {
   try {
     if (!document.fullscreenElement) {
       await viewerShell.requestFullscreen();
@@ -417,7 +437,8 @@ fullscreenBtn.addEventListener('click', async () => {
   }
 });
 
-document.getElementById('exportBtn').addEventListener('click', () => {
+const exportBtn = document.getElementById('exportBtn');
+if (exportBtn) exportBtn.addEventListener('click', () => {
   renderer.render(scene, camera);
   const link = document.createElement('a');
   link.download = 'mockup.png';

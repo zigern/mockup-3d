@@ -40,6 +40,7 @@
             <button id="exportBtn" class="top-export" type="button">EXPORT</button>
             <button type="button" class="top-icon">＋</button>
             <button type="button" class="top-icon">◌</button>
+            <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
           </div>
         </header>
 
@@ -66,10 +67,54 @@
 
             <details class="panel-block">
               <summary><span class="sum-left"><span class="sum-ico">◌</span>Mockup</span><span class="sum-arrow">⌄</span></summary>
+              <div class="panel-body">
+                <label for="upload" class="upload-inline">Upload your design <span>✎</span></label>
+                <div class="mini-control">
+                  <label for="colorPicker">Garment color</label>
+                  <input type="color" id="colorPicker" value="#ffffff" />
+                </div>
+                <div class="color-swatches" id="garmentSwatches">
+                  <button type="button" class="swatch is-active" data-color="#ffffff" style="--swatch:#ffffff" aria-label="White" title="White"></button>
+                  <button type="button" class="swatch" data-color="#111111" style="--swatch:#111111" aria-label="Black" title="Black"></button>
+                  <button type="button" class="swatch" data-color="#8c8c8c" style="--swatch:#8c8c8c" aria-label="Gray" title="Gray"></button>
+                  <button type="button" class="swatch" data-color="#1f2f5d" style="--swatch:#1f2f5d" aria-label="Navy" title="Navy"></button>
+                  <button type="button" class="swatch" data-color="#4d6b3c" style="--swatch:#4d6b3c" aria-label="Olive" title="Olive"></button>
+                  <button type="button" class="swatch" data-color="#7a2d2d" style="--swatch:#7a2d2d" aria-label="Burgundy" title="Burgundy"></button>
+                  <button type="button" class="swatch" data-color="#d8ccb9" style="--swatch:#d8ccb9" aria-label="Sand" title="Sand"></button>
+                  <button type="button" class="swatch" data-color="#b9d2e8" style="--swatch:#b9d2e8" aria-label="Sky" title="Sky"></button>
+                </div>
+              </div>
             </details>
 
             <details class="panel-block">
               <summary><span class="sum-left"><span class="sum-ico">◍</span>Background</span><span class="sum-arrow">⌄</span></summary>
+              <div class="panel-body">
+                <div class="bg-actions">
+                  <label for="bgImageUpload" class="bg-upload-btn">Upload</label>
+                  <input type="file" id="bgImageUpload" accept="image/*" hidden />
+                  <button id="bgReset" class="bg-reset-btn" type="button">Reset</button>
+                </div>
+                <div class="mini-control">
+                  <label for="bgColor">Color</label>
+                  <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
+                </div>
+                <div class="bg-gray-strip" id="bgGrayStrip">
+                  <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#21252d" style="--gray:#21252d"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#343943" style="--gray:#343943"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#515764" style="--gray:#515764"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#7b828f" style="--gray:#7b828f"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#b5bbc6" style="--gray:#b5bbc6"></button>
+                </div>
+                <div class="bg-presets" id="bgPresetGroup">
+                  <button type="button" class="bg-thumb is-active" data-bg-preset="dark"></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-dark.jpg"><img src="/backgrounds/bg-grunge-dark.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-concrete-gray.jpg"><img src="/backgrounds/bg-concrete-gray.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-red.jpg"><img src="/backgrounds/bg-grunge-red.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg"><img src="/backgrounds/bg-grunge-olive.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg"><img src="/backgrounds/bg-brown-light.jpg" alt="" /></button>
+                </div>
+              </div>
             </details>
 
             <details class="panel-block">
@@ -82,6 +127,13 @@
 
             <details class="panel-block">
               <summary><span class="sum-left"><span class="sum-ico">◔</span>Camera</span><span class="sum-arrow">⌄</span></summary>
+              <div class="panel-body">
+                <div class="camera-actions" id="cameraAnimGroup">
+                  <button type="button" class="icon-btn active" data-camera-anim="off">Off</button>
+                  <button type="button" class="icon-btn" data-camera-anim="orbit">Orbit</button>
+                  <button type="button" class="icon-btn" data-camera-anim="focus">Focus</button>
+                </div>
+              </div>
             </details>
 
             <details class="panel-block">
@@ -90,26 +142,20 @@
 
             <details class="panel-block">
               <summary><span class="sum-left"><span class="sum-ico">◌</span>Rotation</span><span class="sum-arrow">⌄</span></summary>
+              <div class="panel-body">
+                <div class="mini-range"><label>x</label><input type="range" id="designRotate" min="-180" max="180" value="0" /><span id="rotateVal">0</span></div>
+              </div>
             </details>
 
             <details class="panel-block">
               <summary><span class="sum-left"><span class="sum-ico">◉</span>Position</span><span class="sum-arrow">⌄</span></summary>
+              <div class="panel-body">
+                <div class="mini-range"><label>x</label><input type="range" id="designX" min="-500" max="500" value="0" /><span id="xVal">0</span></div>
+                <div class="mini-range"><label>y</label><input type="range" id="designY" min="-500" max="500" value="-50" /><span id="yVal">-50</span></div>
+              </div>
             </details>
 
             <div class="support-controls">
-              <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
-              <input type="file" id="bgImageUpload" accept="image/*" hidden />
-              <button id="bgReset" type="button" class="sr-only">Reset</button>
-              <input id="bgColor" type="color" value="#1f1f24" />
-              <input type="color" id="colorPicker" value="#ffffff" />
-              <div id="garmentSwatches" class="sr-only"></div>
-              <div id="bgGrayStrip" class="sr-only"></div>
-              <div id="bgPresetGroup" class="sr-only"></div>
-              <div id="cameraAnimGroup" class="sr-only">
-                <button type="button" data-camera-anim="off" class="icon-btn active">Off</button>
-                <button type="button" data-camera-anim="orbit" class="icon-btn">Orbit</button>
-                <button type="button" data-camera-anim="focus" class="icon-btn">Focus</button>
-              </div>
               <div class="mini-range"><label>Design Size</label><input type="range" id="designSize" min="50" max="800" value="400" /><span id="sizeVal">400</span></div>
               <div class="mini-range"><label>Opacity</label><input type="range" id="designOpacity" min="10" max="100" value="100" /><span id="opacityVal">100</span></div>
               <div class="mini-range"><label>Acid Wash</label><input type="range" id="acidWash" min="0" max="100" value="0" /><span id="acidVal">0</span></div>
