@@ -8,77 +8,87 @@
   <body class="studio-page">
     <div class="studio-shell">
       <aside class="left-rail">
-        <div class="rail-group">
-          <button type="button" class="rail-btn active" title="Home">◉</button>
-          <button type="button" class="rail-btn" title="Tools">⬡</button>
-          <button type="button" class="rail-btn" title="Catalog">▦</button>
-          <button type="button" class="rail-btn" title="Templates">⬒</button>
-          <button type="button" class="rail-btn" title="Upload">⤴</button>
+        <div class="rail-stack">
+          <button type="button" class="rail-btn brand" title="Menu">◈</button>
+          <button type="button" class="rail-btn" title="Back">←</button>
         </div>
-        <div class="rail-group">
+        <div class="rail-stack">
+          <button type="button" class="rail-btn active" title="Catalog">◻</button>
+          <button type="button" class="rail-btn" title="Materials">◉</button>
+          <button type="button" class="rail-btn" title="Garment">⌁</button>
+          <button type="button" class="rail-btn" title="Upload">⤴</button>
+          <button type="button" class="rail-btn" title="Settings">⚙</button>
+        </div>
+        <div class="rail-stack">
           <button type="button" class="rail-btn" id="fullscreenBtn" title="Fullscreen">⤢</button>
-          <button type="button" class="rail-btn" title="Reset view">↻</button>
+          <button type="button" class="rail-btn" title="Reset view">↺</button>
           <button type="button" class="rail-btn" title="Help">?</button>
         </div>
       </aside>
 
       <main class="studio-main">
         <header class="topbar">
-          <div class="top-nav-pill">
-            <a class="studio-home-link" href="/index.html">THREADLAB</a>
-            <span>HOME</span>
+          <nav class="menu-pill">
+            <a class="studio-home-link" href="/index.html">HOME</a>
             <span>TOOLS</span>
             <span>CATALOG</span>
             <span>TEMPLATES</span>
             <span>PROJECTS</span>
-          </div>
+          </nav>
           <div class="top-actions">
-            <label for="upload" class="top-upload">
-              <img src="/icons/bg-upload-cloud.png" alt="" />
-              <span>Upload Design</span>
-            </label>
+            <span class="top-badge">PRO ACCESS</span>
+            <label for="upload" class="top-upload">Upload</label>
             <input type="file" id="upload" accept="image/png,image/jpeg" hidden />
-            <button id="exportBtn" class="top-export" type="button">Export</button>
+            <button id="exportBtn" class="top-export" type="button">EXPORT</button>
+            <button type="button" class="top-icon">＋</button>
+            <button type="button" class="top-icon">◌</button>
           </div>
         </header>
 
         <section class="workspace-grid">
-          <div class="viewer-shell">
+          <section class="canvas-stage viewer-shell">
             <div class="viewer-top">
-              <p>3D Preview</p>
+              <span>Preview</span>
               <span>Drag para rodar</span>
             </div>
             <div id="canvas-container"></div>
-          </div>
+            <div class="canvas-bottom-tools">
+              <button type="button">⧉</button>
+              <button type="button">⌗</button>
+              <button type="button">HQ</button>
+            </div>
+          </section>
 
           <aside class="inspector">
-            <div class="inspector-head">
+            <div class="product-head">
+              <span class="thumb-dot"></span>
               <p>Oversized Sweatshirt</p>
-              <span>•••</span>
+              <span>⌄</span>
             </div>
 
-            <details class="inspector-block" open>
-              <summary>Mockup</summary>
-              <div class="block-content">
-                <div class="row-label">Colors</div>
-                <div class="top-dot-row">
-                  <button type="button" class="dot-color" data-color="#000000" style="--dot:#000000" title="Black"></button>
-                  <button type="button" class="dot-color" data-color="#1a1a1a" style="--dot:#1a1a1a" title="Dark"></button>
-                  <button type="button" class="dot-color" data-color="#444444" style="--dot:#444444" title="Charcoal"></button>
-                  <button type="button" class="dot-color" data-color="#777777" style="--dot:#777777" title="Gray"></button>
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◌ Mockup</span><span>⌄</span></summary>
+              <div class="panel-body">
+                <div class="label-row">Colors</div>
+                <div class="dot-colors">
+                  <button type="button" class="dot" data-color="#000000" style="--dot:#000000"></button>
+                  <button type="button" class="dot" data-color="#1f1f1f" style="--dot:#1f1f1f"></button>
+                  <button type="button" class="dot" data-color="#3b3b3b" style="--dot:#3b3b3b"></button>
+                  <button type="button" class="dot" data-color="#6a6a6a" style="--dot:#6a6a6a"></button>
+                  <button type="button" class="dot more">•••</button>
                 </div>
 
-                <div class="row-label">Material</div>
-                <div class="material-chips">
-                  <button type="button" class="material-chip active">Basic</button>
-                  <button type="button" class="material-chip">Metallic</button>
-                  <button type="button" class="material-chip">Clay</button>
+                <div class="label-row">Material</div>
+                <div class="material-tabs">
+                  <button type="button" class="mat active">Basic</button>
+                  <button type="button" class="mat">Metallic</button>
+                  <button type="button" class="mat">Clay</button>
                 </div>
 
-                <label for="upload" class="upload-inline">Upload your design</label>
+                <label for="upload" class="upload-inline">Upload your design <span>✎</span></label>
 
-                <div class="control-label-row compact">
-                  <label for="colorPicker">Garment color</label>
+                <div class="mini-control">
+                  <label for="colorPicker">Garment Color</label>
                   <input type="color" id="colorPicker" value="#ffffff" />
                 </div>
                 <div class="color-swatches" id="garmentSwatches">
@@ -94,173 +104,103 @@
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Background</summary>
-              <div class="block-content">
-                <div class="select-fake">Solid</div>
-                <div class="control-label-row compact">
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◍ Background</span><span>⌄</span></summary>
+              <div class="panel-body">
+                <div class="select-fake">Solid <span>⌄</span></div>
+                <div class="mini-control">
                   <label for="bgColor">Color</label>
                   <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
                 </div>
-                <div class="select-fake small">sRGB</div>
+                <div class="select-fake small">sRGB <span>⌄</span></div>
 
                 <div class="bg-actions">
-                  <label for="bgImageUpload" class="bg-upload-btn" title="Upload background" aria-label="Upload background">
-                    <img src="/icons/bg-upload-cloud.png" alt="" />
-                    <span>Upload</span>
-                  </label>
+                  <label for="bgImageUpload" class="bg-upload-btn">Upload</label>
                   <input type="file" id="bgImageUpload" accept="image/*" hidden />
                   <button id="bgReset" class="bg-reset-btn" type="button">Reset</button>
                 </div>
+
                 <div class="bg-gray-strip" id="bgGrayStrip">
-                  <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318" title="Graphite"></button>
-                  <button type="button" class="gray-chip" data-bg-color="#21252d" style="--gray:#21252d" title="Slate"></button>
-                  <button type="button" class="gray-chip" data-bg-color="#343943" style="--gray:#343943" title="Deep gray"></button>
-                  <button type="button" class="gray-chip" data-bg-color="#515764" style="--gray:#515764" title="Steel"></button>
-                  <button type="button" class="gray-chip" data-bg-color="#7b828f" style="--gray:#7b828f" title="Medium gray"></button>
-                  <button type="button" class="gray-chip" data-bg-color="#b5bbc6" style="--gray:#b5bbc6" title="Light gray"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#21252d" style="--gray:#21252d"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#343943" style="--gray:#343943"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#515764" style="--gray:#515764"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#7b828f" style="--gray:#7b828f"></button>
+                  <button type="button" class="gray-chip" data-bg-color="#b5bbc6" style="--gray:#b5bbc6"></button>
                 </div>
+
                 <div class="bg-presets" id="bgPresetGroup">
-                  <button type="button" class="bg-thumb is-active" data-bg-preset="dark" title="Default studio gradient"></button>
-                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-dark.jpg" title="Dark grunge"><img src="/backgrounds/bg-grunge-dark.jpg" alt="Dark grunge background" /></button>
-                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-concrete-gray.jpg" title="Concrete gray"><img src="/backgrounds/bg-concrete-gray.jpg" alt="Gray concrete background" /></button>
-                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-red.jpg" title="Grunge red"><img src="/backgrounds/bg-grunge-red.jpg" alt="Grunge red background" /></button>
-                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg" title="Grunge olive"><img src="/backgrounds/bg-grunge-olive.jpg" alt="Grunge olive background" /></button>
-                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg" title="Brown light"><img src="/backgrounds/bg-brown-light.jpg" alt="Brown light background" /></button>
+                  <button type="button" class="bg-thumb is-active" data-bg-preset="dark"></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-dark.jpg"><img src="/backgrounds/bg-grunge-dark.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-concrete-gray.jpg"><img src="/backgrounds/bg-concrete-gray.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-red.jpg"><img src="/backgrounds/bg-grunge-red.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-grunge-olive.jpg"><img src="/backgrounds/bg-grunge-olive.jpg" alt="" /></button>
+                  <button type="button" class="bg-thumb" data-bg-image="/backgrounds/bg-brown-light.jpg"><img src="/backgrounds/bg-brown-light.jpg" alt="" /></button>
                 </div>
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Environment</summary>
-              <div class="block-content">
-                <div class="select-fake">City</div>
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◎ Environment</span><span>⌄</span></summary>
+              <div class="panel-body">
+                <div class="select-fake">City <span>⌄</span></div>
                 <div class="pad-grid"></div>
-                <div class="mini-slider-row">
-                  <label>Intensity</label>
-                  <input type="range" value="60" />
-                  <span>1.25</span>
-                </div>
+                <div class="mini-range"><label>Intensity</label><input type="range" value="62" /><span>1.25</span></div>
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Lighting</summary>
-              <div class="block-content">
-                <div class="control-label-row compact">
-                  <label>Color</label>
-                  <input type="color" value="#ffffff" />
-                </div>
+            <details class="panel-block" open>
+              <summary><span class="sum-left">☼ Lighting</span><span>⌄</span></summary>
+              <div class="panel-body">
+                <div class="mini-control"><label>Color</label><input type="color" value="#ffffff" /></div>
                 <div class="pad-grid"></div>
-                <div class="mini-slider-row">
-                  <label>Intensity</label>
-                  <input type="range" value="55" />
-                  <span>1.26</span>
+                <div class="mini-range"><label>Intensity</label><input type="range" value="64" /><span>1.26</span></div>
+                <div class="mini-range"><label>Distance</label><input type="range" value="60" /><span>6</span></div>
+              </div>
+            </details>
+
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◔ Camera</span><span>⌄</span></summary>
+              <div class="panel-body" id="cameraAnimGroup">
+                <div class="mini-range"><label>Field of View</label><input type="range" value="15" /><span>15</span></div>
+                <div class="camera-actions">
+                  <button type="button" class="icon-btn active" data-camera-anim="off">Off</button>
+                  <button type="button" class="icon-btn" data-camera-anim="orbit">Orbit</button>
+                  <button type="button" class="icon-btn" data-camera-anim="focus">Focus</button>
                 </div>
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Camera</summary>
-              <div class="block-content">
-                <div class="camera-actions" id="cameraAnimGroup">
-                  <button type="button" class="icon-btn active" data-camera-anim="off" title="Off">Off</button>
-                  <button type="button" class="icon-btn" data-camera-anim="orbit" title="Orbit">Orbit</button>
-                  <button type="button" class="icon-btn" data-camera-anim="focus" title="Focus">Focus</button>
-                </div>
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◍ Scene</span><span>⌄</span></summary>
+              <div class="panel-body">
+                <div class="select-fake">None <span>⌄</span></div>
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Scene</summary>
-              <div class="block-content">
-                <div class="select-fake">None</div>
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◌ Rotation</span><span>⌄</span></summary>
+              <div class="panel-body" id="advancedPanel">
+                <div class="mini-range"><label>x</label><input type="range" id="designRotate" min="-180" max="180" value="0" /><span id="rotateVal">0</span></div>
+                <div class="mini-range"><label>y</label><input type="range" value="90" /><span>89.9</span></div>
+                <div class="mini-range"><label>z</label><input type="range" value="0" /><span>0</span></div>
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Rotation</summary>
-              <div id="advancedPanel" class="block-content advanced-panel">
-                <div class="slider-group">
-                  <label for="designRotate">x</label>
-                  <div class="slider-row">
-                    <input type="range" id="designRotate" min="-180" max="180" value="0" />
-                    <span class="val" id="rotateVal">0</span>
-                  </div>
-                </div>
-                <div class="slider-group">
-                  <label>y</label>
-                  <div class="slider-row">
-                    <input type="range" value="90" />
-                    <span class="val">90</span>
-                  </div>
-                </div>
-                <div class="slider-group">
-                  <label>z</label>
-                  <div class="slider-row">
-                    <input type="range" value="0" />
-                    <span class="val">0</span>
-                  </div>
-                </div>
+            <details class="panel-block" open>
+              <summary><span class="sum-left">◉ Position</span><span>⌄</span></summary>
+              <div class="panel-body">
+                <div class="mini-range"><label>x</label><input type="range" id="designX" min="-500" max="500" value="0" /><span id="xVal">0</span></div>
+                <div class="mini-range"><label>y</label><input type="range" id="designY" min="-500" max="500" value="-50" /><span id="yVal">-50</span></div>
+                <div class="mini-range"><label>z</label><input type="range" value="0" /><span>0</span></div>
               </div>
             </details>
 
-            <details class="inspector-block" open>
-              <summary>Position</summary>
-              <div class="block-content advanced-panel">
-                <div class="slider-group">
-                  <label for="designX">x</label>
-                  <div class="slider-row">
-                    <input type="range" id="designX" min="-500" max="500" value="0" />
-                    <span class="val" id="xVal">0</span>
-                  </div>
-                </div>
-                <div class="slider-group">
-                  <label for="designY">y</label>
-                  <div class="slider-row">
-                    <input type="range" id="designY" min="-500" max="500" value="-50" />
-                    <span class="val" id="yVal">-50</span>
-                  </div>
-                </div>
-                <div class="slider-group">
-                  <label>z</label>
-                  <div class="slider-row">
-                    <input type="range" value="0" />
-                    <span class="val">0</span>
-                  </div>
-                </div>
-              </div>
-            </details>
-
-            <div class="hidden-controls">
-              <div class="slider-group">
-                <label for="designSize">Design Size</label>
-                <div class="slider-row">
-                  <input type="range" id="designSize" min="50" max="800" value="400" />
-                  <span class="val" id="sizeVal">400</span>
-                </div>
-              </div>
-              <div class="slider-group">
-                <label for="designOpacity">Opacity</label>
-                <div class="slider-row">
-                  <input type="range" id="designOpacity" min="10" max="100" value="100" />
-                  <span class="val" id="opacityVal">100</span>
-                </div>
-              </div>
-              <div class="slider-group">
-                <label for="acidWash">Acid Wash</label>
-                <div class="slider-row">
-                  <input type="range" id="acidWash" min="0" max="100" value="0" />
-                  <span class="val" id="acidVal">0</span>
-                </div>
-              </div>
-              <div class="slider-group">
-                <label for="puffPrint">Puff Print</label>
-                <div class="slider-row">
-                  <input type="range" id="puffPrint" min="0" max="100" value="0" />
-                  <span class="val" id="puffVal">0</span>
-                </div>
-              </div>
+            <div class="support-controls">
+              <div class="mini-range"><label>Design Size</label><input type="range" id="designSize" min="50" max="800" value="400" /><span id="sizeVal">400</span></div>
+              <div class="mini-range"><label>Opacity</label><input type="range" id="designOpacity" min="10" max="100" value="100" /><span id="opacityVal">100</span></div>
+              <div class="mini-range"><label>Acid Wash</label><input type="range" id="acidWash" min="0" max="100" value="0" /><span id="acidVal">0</span></div>
+              <div class="mini-range"><label>Puff Print</label><input type="range" id="puffPrint" min="0" max="100" value="0" /><span id="puffVal">0</span></div>
               <div class="pill-grid" id="garmentAnimGroup">
                 <button type="button" class="pill active" data-garment-anim="static"><span>Static</span><img class="pill-ico-img" src="/icons/anim-static.png" alt="" /></button>
                 <button type="button" class="pill" data-garment-anim="walk"><span>Walk</span><img class="pill-ico-img" src="/icons/anim-walk.png" alt="" /></button>
@@ -273,13 +213,7 @@
 
         <footer class="timeline-bar">
           <button type="button" class="play-btn">▶</button>
-          <div class="timeline-track">
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-          </div>
+          <div class="timeline-track"><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span><span class="tick"></span></div>
           <span class="timeline-time">00:10</span>
         </footer>
       </main>

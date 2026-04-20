@@ -241,6 +241,20 @@ if (garmentSwatches) {
   });
 }
 
+document.querySelectorAll('.dot[data-color]').forEach((button) => {
+  button.addEventListener('click', () => {
+    setGarmentColor(button.dataset.color);
+  });
+});
+
+document.querySelectorAll('.material-tabs .mat').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.material-tabs .mat').forEach((item) => {
+      item.classList.toggle('active', item === button);
+    });
+  });
+});
+
 bindSlider('designSize', 'sizeVal', (value) => {
   state.designSize = value;
 });
