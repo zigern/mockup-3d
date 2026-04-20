@@ -66,12 +66,23 @@
             </div>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◌</span>Mockup</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 8-8 10-8-10 8-8z"/><path d="M8 11h8"/></svg>
+                  </span>
+                  Mockup
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
               <div class="panel-body">
                 <label for="upload" class="upload-inline">Upload your design <span>✎</span></label>
-                <div class="mini-control">
+                <div class="picker-row">
                   <label for="colorPicker">Garment color</label>
-                  <input type="color" id="colorPicker" value="#ffffff" />
+                  <div class="picker-pro">
+                    <span class="picker-aura"></span>
+                    <input type="color" id="colorPicker" value="#ffffff" />
+                  </div>
                 </div>
                 <div class="color-swatches" id="garmentSwatches">
                   <button type="button" class="swatch is-active" data-color="#ffffff" style="--swatch:#ffffff" aria-label="White" title="White"></button>
@@ -87,16 +98,27 @@
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◍</span>Background</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M7 15l3-3 3 3 3-4 2 2"/><circle cx="9" cy="9" r="1.2"/></svg>
+                  </span>
+                  Background
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
               <div class="panel-body">
                 <div class="bg-actions">
                   <label for="bgImageUpload" class="bg-upload-btn">Upload</label>
                   <input type="file" id="bgImageUpload" accept="image/*" hidden />
                   <button id="bgReset" class="bg-reset-btn" type="button">Reset</button>
                 </div>
-                <div class="mini-control">
+                <div class="picker-row">
                   <label for="bgColor">Color</label>
-                  <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
+                  <div class="picker-pro">
+                    <span class="picker-aura"></span>
+                    <input id="bgColor" type="color" value="#1f1f24" title="Custom background color" />
+                  </div>
                 </div>
                 <div class="bg-gray-strip" id="bgGrayStrip">
                   <button type="button" class="gray-chip" data-bg-color="#111318" style="--gray:#111318"></button>
@@ -118,15 +140,39 @@
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◎</span>Environment</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+                  </span>
+                  Environment
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">☼</span>Lighting</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+                  </span>
+                  Lighting
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◔</span>Camera</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M9 7l1.5-2h3L15 7"/><circle cx="12" cy="13" r="3"/></svg>
+                  </span>
+                  Camera
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
               <div class="panel-body">
                 <div class="camera-actions" id="cameraAnimGroup">
                   <button type="button" class="icon-btn active" data-camera-anim="off">Off</button>
@@ -137,18 +183,42 @@
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◍</span>Scene</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16"/><path d="M6 18l4-6 3 3 3-4 2 3"/></svg>
+                  </span>
+                  Scene
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◌</span>Rotation</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v4h-4"/></svg>
+                  </span>
+                  Rotation
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
               <div class="panel-body">
                 <div class="mini-range"><label>x</label><input type="range" id="designRotate" min="-180" max="180" value="0" /><span id="rotateVal">0</span></div>
               </div>
             </details>
 
             <details class="panel-block">
-              <summary><span class="sum-left"><span class="sum-ico">◉</span>Position</span><span class="sum-arrow">⌄</span></summary>
+              <summary>
+                <span class="sum-left">
+                  <span class="sum-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+                  </span>
+                  Position
+                </span>
+                <span class="sum-arrow">⌄</span>
+              </summary>
               <div class="panel-body">
                 <div class="mini-range"><label>x</label><input type="range" id="designX" min="-500" max="500" value="0" /><span id="xVal">0</span></div>
                 <div class="mini-range"><label>y</label><input type="range" id="designY" min="-500" max="500" value="-50" /><span id="yVal">-50</span></div>
